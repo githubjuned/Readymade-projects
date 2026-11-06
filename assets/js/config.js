@@ -38,8 +38,8 @@ const SITE_CONFIG = {
 
     // Social Media Links
     instagram: "https://instagram.com/nexusprecisionstudio", // [ADD YOUR INSTAGRAM URL]
-    linkedin: "https://linkedin.com/company/nexus-precision-studio", // [ADD YOUR LINKEDIN URL]
-    github: "https://github.com/nexus-precision-studio", // Optional GitHub or project portfolio link
+    linkedin: "https://www.linkedin.com/in/juned-karji-713397268",
+    github: "https://github.com/githubjuned",
   },
 
   // WhatsApp Pre-filled Message Templates
