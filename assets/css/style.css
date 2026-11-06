@@ -544,7 +544,7 @@ input.is-valid, select.is-valid, textarea.is-valid {
 }
 
 /* ==============================================================================
-   FLOW WAVE THREE.JS CANVAS BACKGROUND INTEGRATION & DARK GLASSMORPHISM
+   STARFIELD CLOSE THREE.JS CANVAS BACKGROUND INTEGRATION & DARK GLASSMORPHISM
    ============================================================================== */
 
 /* Fixed Background Canvas */
@@ -567,7 +567,7 @@ body {
 }
 
 html {
-  background-color: #02160c !important;
+  background-color: #0a0a24 !important;
   color: #F8FAFC !important;
 }
 
@@ -582,30 +582,30 @@ header, main, footer, aside, #project-modal, #mobile-menu-container {
 }
 
 .bg-slate-50 {
-  background-color: rgba(2, 22, 12, 0.5) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
+  background-color: rgba(10, 15, 36, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
 }
 
 .bg-blueprint-grid {
   background-image: 
-    linear-gradient(to right, rgba(52, 232, 154, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(52, 232, 154, 0.05) 1px, transparent 1px) !important;
+    linear-gradient(to right, rgba(174, 246, 207, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(174, 246, 207, 0.04) 1px, transparent 1px) !important;
   background-size: 32px 32px !important;
 }
 
 /* Glassmorphic Navbar */
 .glass-nav {
-  background: rgba(2, 22, 12, 0.82) !important;
+  background: rgba(10, 15, 36, 0.85) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
-  border-bottom: 1px solid rgba(52, 232, 154, 0.2) !important;
+  border-bottom: 1px solid rgba(174, 246, 207, 0.18) !important;
 }
 
 .glass-nav-scrolled {
-  background: rgba(2, 22, 12, 0.94) !important;
-  box-shadow: 0 4px 24px -2px rgba(2, 22, 12, 0.7) !important;
-  border-bottom-color: rgba(52, 232, 154, 0.35) !important;
+  background: rgba(10, 15, 36, 0.96) !important;
+  box-shadow: 0 4px 24px -2px rgba(10, 10, 36, 0.8) !important;
+  border-bottom-color: rgba(174, 246, 207, 0.35) !important;
 }
 
 .desktop-nav-link {
@@ -613,26 +613,26 @@ header, main, footer, aside, #project-modal, #mobile-menu-container {
 }
 
 .desktop-nav-link:hover, .desktop-nav-link.active {
-  color: #34e89a !important;
+  color: #aef6cf !important;
 }
 
 /* High-Contrast Card Overrides with Frosted Glass */
 .bg-white {
-  background-color: rgba(11, 24, 20, 0.78) !important;
+  background-color: rgba(10, 16, 40, 0.78) !important;
   backdrop-filter: blur(14px) !important;
   -webkit-backdrop-filter: blur(14px) !important;
-  border: 1px solid rgba(52, 232, 154, 0.2) !important;
+  border: 1px solid rgba(174, 246, 207, 0.2) !important;
   color: #F8FAFC !important;
 }
 
 .card-hover-elevation {
-  border-color: rgba(52, 232, 154, 0.2) !important;
+  border-color: rgba(174, 246, 207, 0.2) !important;
   box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5) !important;
 }
 
 .card-hover-elevation:hover {
-  border-color: rgba(52, 232, 154, 0.55) !important;
-  box-shadow: 0 16px 36px -4px rgba(6, 182, 212, 0.25), 0 0 14px rgba(52, 232, 154, 0.15) !important;
+  border-color: rgba(174, 246, 207, 0.55) !important;
+  box-shadow: 0 16px 36px -4px rgba(174, 233, 255, 0.25), 0 0 16px rgba(95, 230, 160, 0.18) !important;
   transform: translateY(-4px) !important;
 }
 
@@ -651,20 +651,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-cyan-700 {
-  color: #22D3EE !important;
+  color: #aee9ff !important;
 }
 
 /* High-Tech Form Input Styling */
 input, select, textarea {
-  background-color: rgba(7, 20, 16, 0.85) !important;
-  border: 1px solid rgba(52, 232, 154, 0.25) !important;
+  background-color: rgba(10, 16, 40, 0.85) !important;
+  border: 1px solid rgba(174, 246, 207, 0.25) !important;
   color: #FFFFFF !important;
 }
 
 input:focus, select:focus, textarea:focus {
-  border-color: #34e89a !important;
-  box-shadow: 0 0 0 2px rgba(52, 232, 154, 0.3) !important;
-  background-color: rgba(11, 28, 22, 0.95) !important;
+  border-color: #aef6cf !important;
+  box-shadow: 0 0 0 2px rgba(174, 246, 207, 0.3) !important;
+  background-color: rgba(14, 22, 54, 0.95) !important;
 }
 
 input::placeholder, textarea::placeholder {
@@ -672,15 +672,15 @@ input::placeholder, textarea::placeholder {
 }
 
 select option {
-  background-color: #071410 !important;
+  background-color: #0a0a24 !important;
   color: #FFFFFF !important;
 }
 
 /* Sloped Secondary Button Theme Sync */
 .btn-slope-secondary {
-  background: linear-gradient(180deg, #1E293B 0%, #0F172A 48%, #0B1220 100%) !important;
+  background: linear-gradient(180deg, #1E293B 0%, #0F172A 48%, #0A0A24 100%) !important;
   color: #F8FAFC !important;
-  border: 1px solid rgba(52, 232, 154, 0.25) !important;
+  border: 1px solid rgba(174, 246, 207, 0.25) !important;
   box-shadow: 
     inset 0 1.5px 0.5px rgba(255, 255, 255, 0.25),
     inset 0 -2px 0 rgba(0, 0, 0, 0.5),
@@ -689,20 +689,20 @@ select option {
 }
 .btn-slope-secondary:hover {
   background: linear-gradient(180deg, #334155 0%, #1E293B 48%, #0F172A 100%) !important;
-  border-color: rgba(52, 232, 154, 0.5) !important;
+  border-color: rgba(174, 246, 207, 0.5) !important;
   box-shadow: 
     inset 0 1.5px 0.5px rgba(255, 255, 255, 0.4),
     0 5px 0 #020617,
-    0 10px 22px rgba(52, 232, 154, 0.15) !important;
+    0 10px 22px rgba(174, 246, 207, 0.15) !important;
 }
 
 /* Mobile Drawer & Modal Dark Glass */
 #mobile-menu-drawer,
 .modal-container {
-  background: rgba(4, 18, 14, 0.94) !important;
+  background: rgba(8, 12, 32, 0.95) !important;
   backdrop-filter: blur(24px) !important;
   -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(52, 232, 154, 0.3) !important;
+  border: 1px solid rgba(174, 246, 207, 0.3) !important;
   color: #FFFFFF !important;
   box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8) !important;
 }
@@ -713,30 +713,30 @@ select option {
 
 /* Portfolio Item Cards */
 .portfolio-item {
-  background: rgba(11, 24, 20, 0.82) !important;
-  border: 1px solid rgba(52, 232, 154, 0.2) !important;
+  background: rgba(10, 16, 40, 0.82) !important;
+  border: 1px solid rgba(174, 246, 207, 0.2) !important;
 }
 
 .portfolio-item:hover {
-  border-color: rgba(52, 232, 154, 0.5) !important;
-  box-shadow: 0 16px 36px -4px rgba(6, 182, 212, 0.25), 0 0 16px rgba(52, 232, 154, 0.15) !important;
+  border-color: rgba(174, 246, 207, 0.5) !important;
+  box-shadow: 0 16px 36px -4px rgba(174, 233, 255, 0.25), 0 0 16px rgba(95, 230, 160, 0.18) !important;
 }
 
 #portfolio-search-input {
-  background-color: rgba(7, 20, 16, 0.85) !important;
-  border-color: rgba(52, 232, 154, 0.25) !important;
+  background-color: rgba(10, 16, 40, 0.85) !important;
+  border-color: rgba(174, 246, 207, 0.25) !important;
   color: #FFFFFF !important;
 }
 
 /* Badges & Pills */
 .bg-slate-100 {
-  background-color: rgba(15, 30, 26, 0.85) !important;
+  background-color: rgba(15, 24, 52, 0.85) !important;
   color: #94A3B8 !important;
-  border-color: rgba(52, 232, 154, 0.15) !important;
+  border-color: rgba(174, 246, 207, 0.15) !important;
 }
 
 .bg-blue-50 {
   background-color: rgba(37, 99, 235, 0.15) !important;
-  color: #60A5FA !important;
+  color: #93C5FD !important;
   border-color: rgba(37, 99, 235, 0.3) !important;
 }
