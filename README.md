@@ -138,7 +138,8 @@ Double-click `index.html` to open it in any modern web browser (Google Chrome, M
 | Requirement | Implementation | Status |
 | :--- | :--- | :--- |
 | **Non-e-commerce** | Pure service & consultation platform. No carts, checkout, or price lists. | ✅ Verified |
-| **Color Palette** | Deep Navy (`#0B1220`), Blue (`#2563EB`), Cyan (`#06B6D4`), White (`#FFFFFF`), Light Canvas (`#F8FAFC`). | ✅ Verified |
+| **3D Live Background** | Interactive **Starfield Close** Three.js starlight tunnel with 4,200 twinkling stars, cursor repulsion, scroll camera dive, and corner-flame bloom shaders. | ✅ Verified |
+| **Color Palette** | Deep Cosmic Indigo (`#0A0A24`), Mint (`#AEF6CF`), Jade (`#5FE6A0`), Blue (`#2563EB`), Cyan (`#06B6D4`), White (`#FFFFFF`). | ✅ Verified |
 | **Typography** | Modern **Geist** (`Geist` for headings & body, `Geist Mono` for telemetry & code tags). | ✅ Verified |
 | **Tactile Slope Design** | Realistic physical slope buttons (`.btn-slope`), slope icons (`.icon-slope`), and floating WhatsApp pill (`.floating-slope-wa`) with specular highlights and bevel depth. | ✅ Verified |
 | **WhatsApp Direct** | Configured to **+91 96429 12613** (`919642912613`) with immediate autofill redirect templates. | ✅ Verified |
