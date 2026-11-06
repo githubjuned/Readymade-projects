@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" fill="#0B1220"/>
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#1E293B" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="340" fill="url(#grid)"/>
+  <!-- Conveyor System Schematic -->
+  <g transform="translate(100, 90)">
+    <!-- Rollers -->
+    <circle cx="40" cy="110" r="30" fill="#1E293B" stroke="#2563EB" stroke-width="3"/>
+    <circle cx="360" cy="110" r="30" fill="#1E293B" stroke="#2563EB" stroke-width="3"/>
+    <!-- Belt Track -->
+    <path d="M 40 80 H 360 M 40 140 H 360" stroke="#06B6D4" stroke-width="4"/>
+    <!-- Moving Parts on Belt -->
+    <rect x="120" y="55" width="40" height="25" rx="3" fill="#10B981" stroke="#059669"/>
+    <rect x="220" y="55" width="40" height="25" rx="3" fill="#EF4444" stroke="#DC2626"/>
+    <!-- Pneumatic Ejector Piston -->
+    <rect x="230" y="0" width="20" height="40" fill="#334155" stroke="#94A3B8" stroke-width="1.5"/>
+    <line x1="240" y1="40" x2="240" y2="55" stroke="#F59E0B" stroke-width="4"/>
+    <!-- Optical Sensor Beam -->
+    <line x1="140" y1="20" x2="140" y2="80" stroke="#06B6D4" stroke-width="1.5" stroke-dasharray="3,3"/>
+  </g>
+  <text x="30" y="40" fill="#06B6D4" font-family="monospace" font-size="12" font-weight="bold">// PNEUMATIC AUTOMATION &amp; DEFECT EJECTION</text>
+  <text x="30" y="60" fill="#94A3B8" font-family="monospace" font-size="10">DRIVE: DC GEARMOTOR | ACTUATION: 5/2 SOLENOID VALVE | SENSING: IR PROXIMITY</text>
+</svg>

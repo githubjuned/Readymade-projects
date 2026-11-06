@@ -1,0 +1,742 @@
+/* ==============================================================================
+   NEXUS PRECISION STUDIO — DESIGN SYSTEM WITH GEIST FONT & TACTILE SLOPED BUTTONS
+   ============================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap');
+
+:root {
+  --color-deep-navy: #0B1220;
+  --color-blue-primary: #2563EB;
+  --color-blue-hover: #1D4ED8;
+  --color-cyan-accent: #06B6D4;
+  --color-canvas-bg: #F8FAFC;
+  --color-surface-white: #FFFFFF;
+  --color-surface-card: #FFFFFF;
+  --color-surface-muted: #F1F5F9;
+  --color-border-subtle: #E2E8F0;
+  --color-text-main: #0B1220;
+  --color-text-muted: #64748B;
+  --color-text-dim: #94A3B8;
+  
+  /* Primary Geist Font Typography */
+  --font-display: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  background-color: var(--color-canvas-bg);
+  color: var(--color-text-main);
+  letter-spacing: -0.01em;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-body);
+}
+
+/* Typography Utility Classes */
+.font-display-heading {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+}
+
+.font-body-text {
+  font-family: var(--font-body);
+}
+
+.font-mono-code {
+  font-family: var(--font-mono);
+}
+
+/* ==============================================================================
+   TACTILE REALISTIC SLOPED BUTTON SYSTEM ("SLOPE LIKE REAL")
+   Engineered with physical 3D bevels, light reflection slope, and tactile click
+   ============================================================================== */
+
+.btn-slope {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  border-radius: 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+/* Subtle chamfered angle top corner accent */
+.btn-slope::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 11px 11px 0 0;
+  pointer-events: none;
+}
+
+/* Primary Royal Blue Sloped Button */
+.btn-slope-primary {
+  background: linear-gradient(180deg, #3B82F6 0%, #2563EB 50%, #1D4ED8 100%);
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.6),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.28),
+    0 4px 0 #1E40AF,
+    0 8px 18px rgba(37, 99, 235, 0.35);
+  transform: translateY(-2px);
+}
+.btn-slope-primary:hover {
+  background: linear-gradient(180deg, #60A5FA 0%, #2563EB 48%, #1D4ED8 100%);
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.8),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.35),
+    0 5px 0 #1E40AF,
+    0 12px 24px rgba(37, 99, 235, 0.45);
+  transform: translateY(-3px);
+}
+.btn-slope-primary:active {
+  transform: translateY(2px);
+  box-shadow: 
+    inset 0 2px 2px rgba(0, 0, 0, 0.25),
+    0 1px 0 #1E40AF,
+    0 3px 6px rgba(37, 99, 235, 0.2);
+}
+
+/* Emerald WhatsApp Sloped Button (Tactile Hardware Green) */
+.btn-slope-emerald {
+  background: linear-gradient(180deg, #10B981 0%, #059669 50%, #047857 100%);
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.65),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.28),
+    0 4px 0 #065F46,
+    0 8px 18px rgba(16, 185, 129, 0.38);
+  transform: translateY(-2px);
+}
+.btn-slope-emerald:hover {
+  background: linear-gradient(180deg, #34D399 0%, #059669 48%, #047857 100%);
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.85),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.35),
+    0 5px 0 #065F46,
+    0 12px 24px rgba(16, 185, 129, 0.48);
+  transform: translateY(-3px);
+}
+.btn-slope-emerald:active {
+  transform: translateY(2px);
+  box-shadow: 
+    inset 0 2px 2px rgba(0, 0, 0, 0.25),
+    0 1px 0 #065F46,
+    0 3px 6px rgba(16, 185, 129, 0.25);
+}
+
+/* Cyan Sloped Accent Button */
+.btn-slope-cyan {
+  background: linear-gradient(180deg, #22D3EE 0%, #06B6D4 50%, #0891B2 100%);
+  color: #0B1220 !important;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.75),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.25),
+    0 4px 0 #0E7490,
+    0 8px 18px rgba(6, 182, 212, 0.35);
+  transform: translateY(-2px);
+}
+.btn-slope-cyan:hover {
+  background: linear-gradient(180deg, #67E8F9 0%, #06B6D4 48%, #0891B2 100%);
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.9),
+    0 5px 0 #0E7490,
+    0 12px 24px rgba(6, 182, 212, 0.45);
+  transform: translateY(-3px);
+}
+.btn-slope-cyan:active {
+  transform: translateY(2px);
+  box-shadow: 
+    inset 0 2px 2px rgba(0, 0, 0, 0.2),
+    0 1px 0 #0E7490,
+    0 3px 6px rgba(6, 182, 212, 0.2);
+}
+
+/* Light / Secondary Sloped Button */
+.btn-slope-secondary {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 52%, #E2E8F0 100%);
+  color: #0B1220 !important;
+  border: 1px solid #CBD5E1;
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.95),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.08),
+    0 3.5px 0 #94A3B8,
+    0 6px 14px rgba(11, 18, 32, 0.06);
+  transform: translateY(-2px);
+}
+.btn-slope-secondary:hover {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 52%, #E2E8F0 100%);
+  border-color: #94A3B8;
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 1),
+    0 4.5px 0 #94A3B8,
+    0 10px 20px rgba(11, 18, 32, 0.09);
+  transform: translateY(-3px);
+}
+.btn-slope-secondary:active {
+  transform: translateY(1.5px);
+  box-shadow: 
+    0 1px 0 #94A3B8,
+    0 2px 5px rgba(11, 18, 32, 0.06);
+}
+
+/* Dark Void Sloped Button */
+.btn-slope-dark {
+  background: linear-gradient(180deg, #1E293B 0%, #0F172A 50%, #0B1220 100%);
+  color: #38BDF8 !important;
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(56, 189, 248, 0.35),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.6),
+    0 4px 0 #020617,
+    0 8px 20px rgba(11, 18, 32, 0.45);
+  transform: translateY(-2px);
+}
+.btn-slope-dark:hover {
+  color: #FFFFFF !important;
+  border-color: #06B6D4;
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(56, 189, 248, 0.55),
+    0 5px 0 #020617,
+    0 12px 24px rgba(6, 182, 212, 0.25);
+  transform: translateY(-3px);
+}
+.btn-slope-dark:active {
+  transform: translateY(2px);
+  box-shadow: 
+    inset 0 2px 2px rgba(0, 0, 0, 0.4),
+    0 1px 0 #020617,
+    0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* ==============================================================================
+   TACTILE REALISTIC SLOPED ICONS ("ICON LIKE REAL")
+   Embossed hardware wells with light reflection bevel
+   ============================================================================== */
+
+.icon-slope {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.icon-slope::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 13px 13px 0 0;
+  pointer-events: none;
+}
+
+.icon-slope-blue {
+  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 48%, #BFDBFE 100%);
+  border: 1px solid #93C5FD;
+  color: #1D4ED8;
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 2px rgba(37, 99, 235, 0.15),
+    0 4px 10px rgba(37, 99, 235, 0.14),
+    0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.icon-slope-blue:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 1),
+    0 6px 14px rgba(37, 99, 235, 0.22);
+}
+
+.icon-slope-cyan {
+  background: linear-gradient(135deg, #ECFEFF 0%, #CFFAFE 48%, #A5F3FC 100%);
+  border: 1px solid #67E8F9;
+  color: #0E7490;
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 2px rgba(6, 182, 212, 0.15),
+    0 4px 10px rgba(6, 182, 212, 0.14);
+}
+.icon-slope-cyan:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 1),
+    0 6px 14px rgba(6, 182, 212, 0.22);
+}
+
+.icon-slope-emerald {
+  background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 48%, #A7F3D0 100%);
+  border: 1px solid #6EE7B7;
+  color: #047857;
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 2px rgba(16, 185, 129, 0.15),
+    0 4px 10px rgba(16, 185, 129, 0.14);
+}
+.icon-slope-emerald:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 1),
+    0 6px 14px rgba(16, 185, 129, 0.22);
+}
+
+.icon-slope-dark {
+  background: linear-gradient(135deg, #1E293B 0%, #0F172A 50%, #0B1220 100%);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  color: #38BDF8;
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(56, 189, 248, 0.4),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.6),
+    0 4px 10px rgba(0, 0, 0, 0.35);
+}
+.icon-slope-dark:hover {
+  transform: translateY(-2px) scale(1.03);
+  border-color: #06B6D4;
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(56, 189, 248, 0.6),
+    0 6px 16px rgba(6, 182, 212, 0.25);
+}
+
+/* Floating WhatsApp Button with Sloped Real Finish */
+.floating-slope-wa {
+  background: linear-gradient(180deg, #10B981 0%, #059669 48%, #047857 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 
+    inset 0 2px 1px rgba(255, 255, 255, 0.7),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.3),
+    0 6px 0 #065F46,
+    0 12px 28px rgba(16, 185, 129, 0.45);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.floating-slope-wa:hover {
+  background: linear-gradient(180deg, #34D399 0%, #059669 48%, #047857 100%);
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 
+    inset 0 2px 1px rgba(255, 255, 255, 0.9),
+    0 8px 0 #065F46,
+    0 16px 36px rgba(16, 185, 129, 0.55);
+}
+.floating-slope-wa:active {
+  transform: translateY(3px) scale(0.98);
+  box-shadow: 
+    inset 0 2px 2px rgba(0, 0, 0, 0.3),
+    0 2px 0 #065F46,
+    0 4px 10px rgba(16, 185, 129, 0.3);
+}
+
+/* Blueprint Coordinate Grid Background */
+.bg-blueprint-grid {
+  background-image: 
+    linear-gradient(to right, rgba(11, 18, 32, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 18, 32, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-blueprint-dark {
+  background-image: 
+    linear-gradient(to right, rgba(6, 182, 212, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(6, 182, 212, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Precision Radial Tech Glow */
+.tech-glow-navy {
+  position: relative;
+}
+.tech-glow-navy::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, rgba(37, 99, 235, 0.04) 60%, transparent 100%);
+  pointer-events: none;
+  border-radius: 9999px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Glassmorphism Classes */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+.glass-nav-scrolled {
+  box-shadow: 0 4px 20px -2px rgba(11, 18, 32, 0.08);
+}
+
+.glass-card-dark {
+  background: rgba(11, 18, 32, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+}
+
+/* Card Elevation Hover Effect */
+.card-hover-elevation {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease;
+  border: 1px solid #E2E8F0;
+}
+.card-hover-elevation:hover {
+  transform: translateY(-4px);
+  border-color: rgba(37, 99, 235, 0.35);
+  box-shadow: 0 14px 32px -4px rgba(11, 18, 32, 0.09), 0 4px 12px -2px rgba(37, 99, 235, 0.05);
+}
+
+/* Animated Live Pulse */
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+}
+.pulse-indicator {
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+/* Floating WhatsApp Button Pulse */
+@keyframes floatPulse {
+  0% {
+    box-shadow: 
+      inset 0 2px 1px rgba(255, 255, 255, 0.7),
+      inset 0 -3px 0 rgba(0, 0, 0, 0.3),
+      0 6px 0 #065F46,
+      0 0 0 0 rgba(16, 185, 129, 0.6);
+  }
+  70% {
+    box-shadow: 
+      inset 0 2px 1px rgba(255, 255, 255, 0.7),
+      inset 0 -3px 0 rgba(0, 0, 0, 0.3),
+      0 6px 0 #065F46,
+      0 0 0 16px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 
+      inset 0 2px 1px rgba(255, 255, 255, 0.7),
+      inset 0 -3px 0 rgba(0, 0, 0, 0.3),
+      0 6px 0 #065F46,
+      0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+.floating-pulse {
+  animation: floatPulse 2.5s infinite;
+}
+
+/* Form Validation Styles */
+input.is-invalid, select.is-invalid, textarea.is-invalid {
+  border-color: #EF4444 !important;
+  background-color: #FEF2F2 !important;
+}
+input.is-valid, select.is-valid, textarea.is-valid {
+  border-color: #10B981 !important;
+  background-color: #ECFDF5 !important;
+}
+.field-error-msg {
+  color: #DC2626;
+  font-size: 12px;
+  margin-top: 4px;
+  font-family: var(--font-mono);
+}
+
+/* Modal Transitions */
+.modal-overlay {
+  transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+}
+.modal-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.modal-overlay:not(.hidden) {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.modal-container {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+.modal-overlay.hidden .modal-container {
+  transform: scale(0.95) translateY(12px);
+  opacity: 0;
+}
+.modal-overlay:not(.hidden) .modal-container {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* Mobile Drawer Transitions */
+#mobile-menu-drawer {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#mobile-menu-backdrop {
+  transition: opacity 0.3s ease;
+}
+
+/* Code Telemetry Badge */
+.telemetry-chip {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+/* Interactive Pill Active State */
+.filter-tab-active {
+  background: linear-gradient(180deg, #3B82F6 0%, #2563EB 50%, #1D4ED8 100%) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 
+    inset 0 1px 0.5px rgba(255, 255, 255, 0.6),
+    0 3px 0 #1E40AF,
+    0 6px 14px rgba(37, 99, 235, 0.3) !important;
+  transform: translateY(-1.5px);
+}
+
+/* ==============================================================================
+   FLOW WAVE THREE.JS CANVAS BACKGROUND INTEGRATION & DARK GLASSMORPHISM
+   ============================================================================== */
+
+/* Fixed Background Canvas */
+#scene {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+}
+
+/* Ensure Page Structure is Layered Above Canvas */
+body {
+  background-color: transparent !important;
+  color: #F8FAFC !important;
+  overflow-x: hidden;
+  position: relative;
+}
+
+html {
+  background-color: #02160c !important;
+  color: #F8FAFC !important;
+}
+
+header, main, footer, aside, #project-modal, #mobile-menu-container {
+  position: relative;
+  z-index: 10;
+}
+
+/* Section Transparency & Atmosphere */
+.bg-canvas {
+  background-color: transparent !important;
+}
+
+.bg-slate-50 {
+  background-color: rgba(2, 22, 12, 0.5) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+.bg-blueprint-grid {
+  background-image: 
+    linear-gradient(to right, rgba(52, 232, 154, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(52, 232, 154, 0.05) 1px, transparent 1px) !important;
+  background-size: 32px 32px !important;
+}
+
+/* Glassmorphic Navbar */
+.glass-nav {
+  background: rgba(2, 22, 12, 0.82) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(52, 232, 154, 0.2) !important;
+}
+
+.glass-nav-scrolled {
+  background: rgba(2, 22, 12, 0.94) !important;
+  box-shadow: 0 4px 24px -2px rgba(2, 22, 12, 0.7) !important;
+  border-bottom-color: rgba(52, 232, 154, 0.35) !important;
+}
+
+.desktop-nav-link {
+  color: #CBD5E1 !important;
+}
+
+.desktop-nav-link:hover, .desktop-nav-link.active {
+  color: #34e89a !important;
+}
+
+/* High-Contrast Card Overrides with Frosted Glass */
+.bg-white {
+  background-color: rgba(11, 24, 20, 0.78) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(52, 232, 154, 0.2) !important;
+  color: #F8FAFC !important;
+}
+
+.card-hover-elevation {
+  border-color: rgba(52, 232, 154, 0.2) !important;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5) !important;
+}
+
+.card-hover-elevation:hover {
+  border-color: rgba(52, 232, 154, 0.55) !important;
+  box-shadow: 0 16px 36px -4px rgba(6, 182, 212, 0.25), 0 0 14px rgba(52, 232, 154, 0.15) !important;
+  transform: translateY(-4px) !important;
+}
+
+/* Text Visibility & Legibility Overrides */
+.text-\[\#0B1220\],
+h1, h2, h3, h4, h5, h6 {
+  color: #FFFFFF !important;
+}
+
+.text-slate-600, .text-slate-700 {
+  color: #CBD5E1 !important;
+}
+
+.text-slate-500 {
+  color: #94A3B8 !important;
+}
+
+.text-cyan-700 {
+  color: #22D3EE !important;
+}
+
+/* High-Tech Form Input Styling */
+input, select, textarea {
+  background-color: rgba(7, 20, 16, 0.85) !important;
+  border: 1px solid rgba(52, 232, 154, 0.25) !important;
+  color: #FFFFFF !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #34e89a !important;
+  box-shadow: 0 0 0 2px rgba(52, 232, 154, 0.3) !important;
+  background-color: rgba(11, 28, 22, 0.95) !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #64748B !important;
+}
+
+select option {
+  background-color: #071410 !important;
+  color: #FFFFFF !important;
+}
+
+/* Sloped Secondary Button Theme Sync */
+.btn-slope-secondary {
+  background: linear-gradient(180deg, #1E293B 0%, #0F172A 48%, #0B1220 100%) !important;
+  color: #F8FAFC !important;
+  border: 1px solid rgba(52, 232, 154, 0.25) !important;
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.25),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.5),
+    0 4px 0 #020617,
+    0 8px 18px rgba(0, 0, 0, 0.5) !important;
+}
+.btn-slope-secondary:hover {
+  background: linear-gradient(180deg, #334155 0%, #1E293B 48%, #0F172A 100%) !important;
+  border-color: rgba(52, 232, 154, 0.5) !important;
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.4),
+    0 5px 0 #020617,
+    0 10px 22px rgba(52, 232, 154, 0.15) !important;
+}
+
+/* Mobile Drawer & Modal Dark Glass */
+#mobile-menu-drawer,
+.modal-container {
+  background: rgba(4, 18, 14, 0.94) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(52, 232, 154, 0.3) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8) !important;
+}
+
+#modal-overview, #modal-problem, #modal-features-list, #modal-deliverables-list {
+  color: #CBD5E1 !important;
+}
+
+/* Portfolio Item Cards */
+.portfolio-item {
+  background: rgba(11, 24, 20, 0.82) !important;
+  border: 1px solid rgba(52, 232, 154, 0.2) !important;
+}
+
+.portfolio-item:hover {
+  border-color: rgba(52, 232, 154, 0.5) !important;
+  box-shadow: 0 16px 36px -4px rgba(6, 182, 212, 0.25), 0 0 16px rgba(52, 232, 154, 0.15) !important;
+}
+
+#portfolio-search-input {
+  background-color: rgba(7, 20, 16, 0.85) !important;
+  border-color: rgba(52, 232, 154, 0.25) !important;
+  color: #FFFFFF !important;
+}
+
+/* Badges & Pills */
+.bg-slate-100 {
+  background-color: rgba(15, 30, 26, 0.85) !important;
+  color: #94A3B8 !important;
+  border-color: rgba(52, 232, 154, 0.15) !important;
+}
+
+.bg-blue-50 {
+  background-color: rgba(37, 99, 235, 0.15) !important;
+  color: #60A5FA !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+}

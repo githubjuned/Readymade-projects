@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" fill="#0B1220"/>
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#1E293B" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="340" fill="url(#grid)"/>
+  <rect x="150" y="60" width="300" height="220" rx="8" fill="#064E3B" stroke="#10B981" stroke-width="2"/>
+  <rect x="240" y="110" width="120" height="120" rx="4" fill="#0F172A" stroke="#06B6D4" stroke-width="2"/>
+  <text x="300" y="165" fill="#FFFFFF" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">STM32F401</text>
+  <text x="300" y="185" fill="#38BDF8" font-family="monospace" font-size="9" text-anchor="middle">ARM CORTEX-M4</text>
+  <path d="M220 130 H240 M220 150 H240 M220 170 H240 M220 190 H240 M220 210 H240" stroke="#F59E0B" stroke-width="2"/>
+  <path d="M360 130 H380 M360 150 H380 M360 170 H380 M360 190 H380 M360 210 H380" stroke="#F59E0B" stroke-width="2"/>
+  <text x="30" y="40" fill="#06B6D4" font-family="monospace" font-size="12" font-weight="bold">// HARDWARE SCHEMATIC: POWER METERING PCB</text>
+  <text x="30" y="60" fill="#94A3B8" font-family="monospace" font-size="10">LAYERS: 2 | CAD: KiCAD 8 | PROTOCOL: MODBUS RTU</text>
+</svg>

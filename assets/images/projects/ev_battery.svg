@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" fill="#0B1220"/>
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#1E293B" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="340" fill="url(#grid)"/>
+  <!-- EV Battery Pack Cells -->
+  <g transform="translate(140, 80)">
+    <!-- Battery Outer Enclosure -->
+    <rect x="0" y="0" width="320" height="150" rx="12" fill="#0F172A" stroke="#2563EB" stroke-width="2"/>
+    <!-- Terminal Posts -->
+    <rect x="30" y="-12" width="24" height="12" rx="2" fill="#EF4444"/>
+    <text x="42" y="-2" fill="#FFFFFF" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">+</text>
+    <rect x="266" y="-12" width="24" height="12" rx="2" fill="#3B82F6"/>
+    <text x="278" y="-2" fill="#FFFFFF" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">-</text>
+    <!-- 4 Lithium Cell Blocks -->
+    <rect x="25" y="25" width="55" height="100" rx="6" fill="#1E293B" stroke="#06B6D4" stroke-width="1.5"/>
+    <text x="52" y="80" fill="#38BDF8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">3.7V</text>
+    <rect x="95" y="25" width="55" height="100" rx="6" fill="#1E293B" stroke="#06B6D4" stroke-width="1.5"/>
+    <text x="122" y="80" fill="#38BDF8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">3.7V</text>
+    <rect x="165" y="25" width="55" height="100" rx="6" fill="#1E293B" stroke="#06B6D4" stroke-width="1.5"/>
+    <text x="192" y="80" fill="#38BDF8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">3.7V</text>
+    <rect x="235" y="25" width="55" height="100" rx="6" fill="#1E293B" stroke="#06B6D4" stroke-width="1.5"/>
+    <text x="262" y="80" fill="#38BDF8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">3.7V</text>
+  </g>
+  <text x="30" y="40" fill="#06B6D4" font-family="monospace" font-size="12" font-weight="bold">// EV BMS &amp; TELEMETRY ARCHITECTURE</text>
+  <text x="30" y="60" fill="#94A3B8" font-family="monospace" font-size="10">CELLS: 4S LITHIUM | SENSORS: CURRENT, TEMP, SOC | PROTOCOL: CAN BUS</text>
+</svg>
