@@ -100,11 +100,11 @@ const PROJECTS_DATA = [
   },
   {
     id: "project-niat-bootcamp",
-    title: "Full-Stack Embedded Engineering & Architecture Foundation",
+    title: "NIAT Bootcamp 13: Embedded Systems & Advanced Engineering Architecture",
     category: "hardware",
     categoryLabel: "HARDWARE // SYSTEMS DEV",
     badge: "NIAT BOOTCAMP 13",
-    summary: "Engineered at NxtWave Institute of Advanced Technologies (NIAT) Bootcamp 13, covering rigorous systems engineering, microcontroller interfacing, hardware-software integration, and scalable full-stack development.",
+    summary: "Developed at NxtWave Institute of Advanced Technologies (NIAT) Bootcamp 13! Covering rigorous embedded systems engineering, microcontroller interfacing, hardware-software integration, and scalable architecture.",
     image: "assets/images/projects/niat_bootcamp.jpg",
     remoteImage: "https://media.licdn.com/dms/image/v2/D5622AQEz0-TMjYGGfw/feedshare-image-high-res/B56Zf0E9.IHoA0-/0/1752146637130?e=2147483647&v=beta&t=yAzsmUGhSnZCqM0kDSQZeT2khod_CK6DNDjFtDAIvTs",
     externalUrl: "https://lnkd.in/p/gkEF8XBC",
