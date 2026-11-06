@@ -100,11 +100,11 @@ const PROJECTS_DATA = [
   },
   {
     id: "project-niat-bootcamp",
-    title: "NIAT Bootcamp 13: Embedded Systems & Advanced Engineering Architecture",
+    title: "Full-Stack Embedded Engineering & Architecture Foundation",
     category: "hardware",
     categoryLabel: "HARDWARE // SYSTEMS DEV",
     badge: "NIAT BOOTCAMP 13",
-    summary: "Developed at NxtWave Institute of Advanced Technologies (NIAT) Bootcamp 13! Covering rigorous embedded systems engineering, microcontroller interfacing, hardware-software integration, and scalable architecture.",
+    summary: "Engineered at NxtWave Institute of Advanced Technologies (NIAT) Bootcamp 13, covering rigorous systems engineering, microcontroller interfacing, hardware-software integration, and scalable full-stack development.",
     image: "assets/images/projects/niat_bootcamp.jpg",
     remoteImage: "https://media.licdn.com/dms/image/v2/D5622AQEz0-TMjYGGfw/feedshare-image-high-res/B56Zf0E9.IHoA0-/0/1752146637130?e=2147483647&v=beta&t=yAzsmUGhSnZCqM0kDSQZeT2khod_CK6DNDjFtDAIvTs",
     externalUrl: "https://lnkd.in/p/gkEF8XBC",
@@ -124,6 +124,35 @@ const PROJECTS_DATA = [
         "Modular, well-commented source code repositories",
         "Comprehensive engineering portfolio documentation",
         "Industry-aligned viva questions and technical architecture review guide"
+      ]
+    }
+  },
+  {
+    id: "project-gps-esp8266",
+    title: "Real-Time GPS Satellite Tracking System using ESP8266 & NEO-6M",
+    category: "iot",
+    categoryLabel: "IOT // SATELLITE TELEMETRY",
+    badge: "WORKING HARDWARE",
+    summary: "Custom DIY GPS tracking unit displaying real-time latitude, longitude, and satellite telemetry on a local LCD display using the ESP8266 Wi-Fi module and u-blox NEO-6M GPS receiver.",
+    image: "assets/images/projects/gps_esp8266.jpg",
+    remoteImage: "https://media.licdn.com/dms/image/v2/D5622AQEyVMteom74Fw/feedshare-image-high-res/B56ZfpY8m_GoBU-/0/1751967331416?e=2147483647&v=beta&t=TKFgj4s7mZxwVxZu7Z5WsPaYAcEcoL_ghjme__zPmeI",
+    externalUrl: "https://lnkd.in/p/g8mkUcvT",
+    fallbackIcon: "location_on",
+    techStack: ["ESP8266", "NEO-6M GPS", "16x2 LCD", "UART Serial Protocol", "NMEA Parsing", "C++ / Arduino"],
+    details: {
+      overview: "A real-time satellite geolocation tracking system engineered using the ESP8266 Wi-Fi microcontroller and u-blox NEO-6M GPS receiver module. Designed and built from scratch to parse raw NMEA satellite strings over hardware UART and render accurate live latitude, longitude, and fix status on an alphanumeric LCD display.",
+      problem: "Asset tracking and vehicle navigation systems require cost-effective, low-power GPS decoding units that can reliably process NMEA satellite sentences without relying on expensive proprietary navigation hardware.",
+      features: [
+        "Hardware UART serial communication interfacing NEO-6M satellite receiver with ESP8266.",
+        "Real-time NMEA sentence parsing extracting live latitude, longitude, altitude, and timestamp.",
+        "Clear alphanumeric 16x2 LCD display integration via I2C for instant field coordinate verification.",
+        "Low-power Wi-Fi readiness for wireless telemetry transmission to cloud tracking dashboards."
+      ],
+      deliverables: [
+        "Bench-tested physical hardware prototype on breadboard / PCB layout",
+        "Optimized ESP8266 Arduino C++ firmware with TinyGPS++ parsing",
+        "Complete pinout schematics and UART wiring connection guide",
+        "Comprehensive project viva defense questions and IEEE report"
       ]
     }
   },
