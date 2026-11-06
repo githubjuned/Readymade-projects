@@ -1,62 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nexus Precision Studio — Engineering Project Development & Consultation</title>
-  <meta name="description" content="Affordable engineering project development solutions for Polytechnic Diploma, B.Tech & BE final year students across ECE, CSE, IoT, AI/ML, Robotics, Embedded & Mechanical domains." />
-  
-  <!-- Favicon / Vector Logo -->
-  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg" />
-  
-  <!-- Geist & Geist Mono Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet" />
-  
-  <!-- Material Symbols Icons -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            navy: {
-              DEFAULT: "#0B1220",
-              900: "#0B1220",
-              800: "#111A2E",
-              700: "#1E293B"
-            },
-            primary: {
-              DEFAULT: "#2563EB",
-              hover: "#1D4ED8",
-              light: "#EFF6FF",
-              container: "#2563EB"
-            },
-            cyan: {
-              DEFAULT: "#06B6D4",
-              light: "#E0F2FE",
-              dark: "#0891B2"
-            },
-            canvas: "#F8FAFC"
-          },
-          fontFamily: {
-            sans: ["Geist", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
-            display: ["Geist", "sans-serif"],
-            mono: ["Geist Mono", "monospace"]
-          }
-        }
-      }
-    };
-  </script>
-  
-  <!-- Custom Project Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <!-- Three.js ES-Module Importmap (r0.143.0) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Starfield Close</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+    }
+    body {
+      height: 100%;
+      overflow-x: hidden;
+    }
+    #scene {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      display: block;
+    }
+    #scroll-host {
+      height: 300vh;
+    }
+    #scroll-hint {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(174, 246, 207, 0.4);
+      font-family: monospace, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      pointer-events: none;
+      user-select: none;
+      z-index: 10;
+    }
+  </style>
+
   <script type="importmap">
   {
     "imports": {
@@ -66,1857 +49,11 @@
   }
   </script>
 </head>
-
-<body class="bg-canvas text-white font-sans antialiased min-h-screen flex flex-col relative selection:bg-blue-600 selection:text-white">
-
-  <!-- Fixed Three.js Flow Wave Background Canvas -->
+<body>
   <canvas id="scene"></canvas>
+  <div id="scroll-host"></div>
+  <div id="scroll-hint">scroll &darr;</div>
 
-  <!-- ========================================================================= -->
-  <!-- 1. NAVIGATION BAR                                                         -->
-  <!-- ========================================================================= -->
-  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
-    <div class="h-20 w-full max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
-      
-      <!-- Brand Logo -->
-      <a href="#hero" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-xl p-1">
-        <div class="icon-slope icon-slope-dark w-10 h-10 border border-blue-600/40 text-cyan-400 group-hover:border-cyan-400 transition-colors shadow-sm">
-          <span class="material-symbols-outlined text-[24px]">terminal</span>
-        </div>
-        <div class="flex flex-col">
-          <div class="flex items-center gap-2">
-            <span class="font-display text-lg font-bold tracking-tight text-[#0B1220]">Nexus Studio</span>
-            <span class="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 font-mono text-[10px] uppercase font-semibold border border-blue-100">
-              // ENG_LAB
-            </span>
-          </div>
-          <span class="hidden md:block font-mono text-[10px] text-slate-500 uppercase tracking-wider">PROJECT INNOVATION &amp; R&amp;D</span>
-        </div>
-      </a>
-
-      <!-- Desktop Navigation Menu -->
-      <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium">
-        <a href="#hero" class="desktop-nav-link text-blue-600 font-semibold hover:text-blue-700 transition-colors">Home</a>
-        <a href="#about" class="desktop-nav-link text-slate-600 hover:text-[#0B1220] transition-colors">About Us</a>
-        <a href="#services" class="desktop-nav-link text-slate-600 hover:text-[#0B1220] transition-colors">Services</a>
-        <a href="#domains" class="desktop-nav-link text-slate-600 hover:text-[#0B1220] transition-colors">Domains</a>
-        <a href="#portfolio" class="desktop-nav-link text-slate-600 hover:text-[#0B1220] transition-colors">Portfolio</a>
-        <a href="#why-choose-us" class="desktop-nav-link text-slate-600 hover:text-[#0B1220] transition-colors">Why Choose Us</a>
-        <a href="#how-it-works" class="desktop-nav-link text-slate-600 hover:text-[#0B1220] transition-colors">How It Works</a>
-        <a href="#contact" class="desktop-nav-link text-slate-600 hover:text-[#0B1220] transition-colors">Contact</a>
-      </nav>
-
-      <!-- Header CTAs (Quick WhatsApp & Mobile Menu Trigger) -->
-      <div class="flex items-center gap-3">
-        <!-- Direct WhatsApp Discuss Button with Tactile Slope -->
-        <a 
-          href="#"
-          data-config-href="whatsapp"
-          data-whatsapp-msg="heroCta"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-slope btn-slope-primary px-4 py-2 text-xs sm:text-sm gap-2"
-        >
-          <span class="material-symbols-outlined text-[18px]">chat</span>
-          <span class="hidden sm:inline">Discuss Your Project</span>
-          <span class="sm:hidden">Discuss</span>
-        </a>
-
-        <!-- Mobile Menu Toggle Button -->
-        <button 
-          id="mobile-menu-toggle"
-          type="button"
-          class="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-colors"
-          aria-label="Toggle navigation menu"
-        >
-          <span class="material-symbols-outlined text-[26px]">menu</span>
-        </button>
-      </div>
-
-    </div>
-  </header>
-
-  <!-- Mobile Slide-over Drawer & Backdrop -->
-  <div id="mobile-menu-container" class="fixed inset-0 z-50 pointer-events-none lg:hidden">
-    <!-- Backdrop Overlay -->
-    <div id="mobile-menu-backdrop" class="fixed inset-0 bg-[#0B1220]/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 pointer-events-auto"></div>
-    
-    <!-- Drawer Panel -->
-    <div id="mobile-menu-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-xs bg-white shadow-2xl p-6 flex flex-col justify-between translate-x-full transition-transform duration-300 pointer-events-auto overflow-y-auto">
-      <div>
-        <div class="flex items-center justify-between pb-6 border-b border-slate-100">
-          <div class="flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-lg bg-[#0B1220] flex items-center justify-center text-cyan-400">
-              <span class="material-symbols-outlined text-[18px]">terminal</span>
-            </div>
-            <span class="font-display font-bold text-base text-[#0B1220]">Nexus Studio</span>
-          </div>
-          <button id="mobile-menu-close" type="button" class="p-1.5 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors">
-            <span class="material-symbols-outlined text-[22px]">close</span>
-          </button>
-        </div>
-
-        <nav class="flex flex-col gap-1 py-6">
-          <a href="#hero" class="mobile-nav-link px-3 py-2.5 rounded-lg text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium text-sm transition-colors flex items-center gap-3">
-            <span class="material-symbols-outlined text-[20px] text-slate-400">home</span>
-            <span>Home</span>
-          </a>
-          <a href="#about" class="mobile-nav-link px-3 py-2.5 rounded-lg text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium text-sm transition-colors flex items-center gap-3">
-            <span class="material-symbols-outlined text-[20px] text-slate-400">info</span>
-            <span>About Us</span>
-          </a>
-          <a href="#services" class="mobile-nav-link px-3 py-2.5 rounded-lg text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium text-sm transition-colors flex items-center gap-3">
-            <span class="material-symbols-outlined text-[20px] text-slate-400">precision_manufacturing</span>
-            <span>Our Services</span>
-          </a>
-          <a href="#domains" class="mobile-nav-link px-3 py-2.5 rounded-lg text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium text-sm transition-colors flex items-center gap-3">
-            <span class="material-symbols-outlined text-[20px] text-slate-400">hub</span>
-            <span>Domains</span>
-          </a>
-          <a href="#portfolio" class="mobile-nav-link px-3 py-2.5 rounded-lg text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium text-sm transition-colors flex items-center gap-3">
-            <span class="material-symbols-outlined text-[20px] text-slate-400">folder_special</span>
-            <span>Project Portfolio</span>
-          </a>
-          <a href="#why-choose-us" class="mobile-nav-link px-3 py-2.5 rounded-lg text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium text-sm transition-colors flex items-center gap-3">
-            <span class="material-symbols-outlined text-[20px] text-slate-400">verified</span>
-            <span>Why Choose Us</span>
-          </a>
-          <a href="#how-it-works" class="mobile-nav-link px-3 py-2.5 rounded-lg text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium text-sm transition-colors flex items-center gap-3">
-            <span class="material-symbols-outlined text-[20px] text-slate-400">route</span>
-            <span>How It Works</span>
-          </a>
-          <a href="#contact" class="mobile-nav-link px-3 py-2.5 rounded-lg text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium text-sm transition-colors flex items-center gap-3">
-            <span class="material-symbols-outlined text-[20px] text-slate-400">mail</span>
-            <span>Contact &amp; Enquiry</span>
-          </a>
-        </nav>
-      </div>
-
-      <div class="pt-6 border-t border-slate-100 flex flex-col gap-3">
-        <a 
-          href="#"
-          data-config-href="whatsapp"
-          data-whatsapp-msg="quickChat"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-slope btn-slope-emerald w-full py-3 px-4 text-sm gap-2"
-        >
-          <span class="material-symbols-outlined text-[18px]">chat</span>
-          <span>WhatsApp Chat</span>
-        </a>
-        <div class="text-center font-mono text-[11px] text-slate-400">
-          <span data-config-text="contact.hours">9:00 AM – 9:00 PM IST</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main Content Layout -->
-  <main class="w-full pt-20 flex-1">
-    
-    <!-- ========================================================================= -->
-    <!-- 2. HERO SECTION                                                           -->
-    <!-- ========================================================================= -->
-    <section id="hero" class="relative overflow-hidden pt-8 pb-20 md:py-24 bg-canvas bg-blueprint-grid">
-      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          
-          <!-- Left Hero Content Column -->
-          <div class="lg:col-span-7 flex flex-col items-start gap-5">
-            
-            <!-- Innovation & Eligibility Badge -->
-            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 font-mono text-xs uppercase tracking-wide">
-              <span class="w-2 h-2 rounded-full bg-cyan-500 pulse-indicator"></span>
-              <span class="font-semibold">ENGINEERING R&amp;D STUDIO</span>
-              <span class="text-blue-300">•</span>
-              <span>Diploma / B.Tech / BE</span>
-            </div>
-
-            <!-- Mandatory Main Headline -->
-            <h1 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-bold text-[#0B1220] tracking-tight leading-[1.12]">
-              Your Ideas. <br class="hidden sm:inline" />
-              Our Innovation. <br />
-              <span class="text-blue-600">One Powerful Project.</span>
-            </h1>
-
-            <!-- Mandatory Supporting Text -->
-            <p class="font-display text-lg sm:text-xl md:text-2xl text-cyan-700 font-semibold">
-              Engineering Projects Made Affordable for Every Student.
-            </p>
-
-            <!-- Detailed Subtitle Specifying Domains & Target Audience -->
-            <p class="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
-              We empower Polytechnic Diploma, B.Tech, and BE engineering students across ECE, CSE, IoT, AI/ML, Robotics, Embedded &amp; Mechanical domains with production-grade, faculty-approved project development—without stretching your budget.
-            </p>
-
-            <!-- Primary & Secondary CTAs with Tactile Slope -->
-            <div class="flex flex-wrap items-center gap-3 pt-2 w-full sm:w-auto">
-              <!-- Primary CTA: Discuss Your Project -->
-              <a 
-                href="#contact" 
-                class="btn-slope btn-slope-primary px-6 py-3.5 text-sm gap-2"
-              >
-                <span class="material-symbols-outlined text-[20px]">psychology</span>
-                <span>Discuss Your Project</span>
-              </a>
-
-              <!-- Secondary CTA: Explore Our Work -->
-              <a 
-                href="#portfolio" 
-                class="btn-slope btn-slope-secondary px-6 py-3.5 text-sm gap-2"
-              >
-                <span class="material-symbols-outlined text-[20px]">precision_manufacturing</span>
-                <span>Explore Our Work</span>
-              </a>
-
-              <!-- Instant WhatsApp Quick Action -->
-              <a 
-                href="#"
-                data-config-href="whatsapp"
-                data-whatsapp-msg="quickChat"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn-slope btn-slope-emerald px-5 py-3.5 text-sm gap-2"
-              >
-                <span class="material-symbols-outlined text-[20px]">chat</span>
-                <span>Quick WhatsApp</span>
-              </a>
-            </div>
-
-            <!-- Trust Indicators -->
-            <div class="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 w-full border-t border-slate-200/80">
-              <div class="flex items-center gap-2 text-slate-700 font-mono text-xs">
-                <div class="icon-slope icon-slope-blue w-7 h-7 text-blue-600 shrink-0">
-                  <span class="material-symbols-outlined text-[16px]">memory</span>
-                </div>
-                <span>Custom Hardware</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-700 font-mono text-xs">
-                <div class="icon-slope icon-slope-blue w-7 h-7 text-blue-600 shrink-0">
-                  <span class="material-symbols-outlined text-[16px]">payments</span>
-                </div>
-                <span>Student Pricing</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-700 font-mono text-xs">
-                <div class="icon-slope icon-slope-blue w-7 h-7 text-blue-600 shrink-0">
-                  <span class="material-symbols-outlined text-[16px]">support_agent</span>
-                </div>
-                <span>1-on-1 Viva Prep</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-700 font-mono text-xs">
-                <div class="icon-slope icon-slope-blue w-7 h-7 text-blue-600 shrink-0">
-                  <span class="material-symbols-outlined text-[16px]">verified_user</span>
-                </div>
-                <span>Zero Hidden Costs</span>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Right Hero Visual Console & Prototype Bench -->
-          <div class="lg:col-span-5 relative mt-4 lg:mt-0">
-            <div class="relative rounded-2xl overflow-hidden bg-[#0B1220] shadow-2xl p-3 border border-cyan-500/20 tech-glow-navy">
-              
-              <!-- Terminal Bar Header -->
-              <div class="flex items-center justify-between px-3 py-2 bg-[#0B1220] text-slate-400 rounded-t-xl border-b border-slate-800">
-                <div class="flex items-center gap-2">
-                  <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
-                  <span class="w-3 h-3 rounded-full bg-amber-400 inline-block"></span>
-                  <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
-                </div>
-                <span class="font-mono text-xs text-cyan-300 font-medium">LAB_BENCH // LIVE_TELEMETRY</span>
-              </div>
-
-              <!-- Vector/Interactive Prototype Bench Visual -->
-              <div class="relative rounded-xl overflow-hidden aspect-[4/3] bg-slate-950">
-                <img 
-                  src="assets/images/projects/bench.svg" 
-                  alt="Prototype lab testbench with oscilloscope waveforms and logic analyzers"
-                  class="w-full h-full object-cover"
-                />
-
-                <!-- Dynamic Telemetry HUD Overlays -->
-                <div class="absolute inset-0 pointer-events-none p-3.5 flex flex-col justify-between">
-                  <div class="flex justify-between items-start">
-                    <span class="px-2.5 py-1 rounded bg-[#0B1220]/90 backdrop-blur font-mono text-[11px] text-cyan-300 flex items-center gap-1.5 border border-cyan-500/30 shadow">
-                      <span class="w-2 h-2 rounded-full bg-cyan-400 pulse-indicator"></span>
-                      ESP32: 2.4GHz Wi-Fi
-                    </span>
-                    <span class="px-2.5 py-1 rounded bg-[#0B1220]/90 backdrop-blur font-mono text-[11px] text-emerald-400 border border-emerald-500/30 shadow">
-                      Telemetry: 115200 Baud
-                    </span>
-                  </div>
-                  <div class="flex justify-between items-end">
-                    <span class="px-2.5 py-1 rounded bg-[#0B1220]/90 backdrop-blur font-mono text-[11px] text-slate-300 border border-slate-700">
-                      CAD Tolerance: ±0.05mm
-                    </span>
-                    <span class="px-2.5 py-1 rounded bg-blue-600/90 text-white font-mono text-[11px] font-semibold shadow">
-                      Model Acc: 99.4%
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Bench Status Footer -->
-              <div class="p-3 bg-[#0B1220] flex items-center justify-between text-xs font-mono border-t border-slate-800 text-slate-300">
-                <span class="text-cyan-400 flex items-center gap-1.5">
-                  <span class="material-symbols-outlined text-[16px]">tune</span>
-                  STATUS: READY FOR PROJECT INTAKE
-                </span>
-                <span class="text-slate-400">BATCH 2024–2026</span>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- REAL-TIME INTAKE TICKER                                                   -->
-    <!-- ========================================================================= -->
-    <div class="w-full bg-slate-900 text-white py-3 border-y border-slate-800">
-      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
-        <div class="flex items-center gap-2 text-cyan-400">
-          <span class="material-symbols-outlined text-[18px]">verified</span>
-          <span class="font-bold">FACULTY-APPROVED ARCHITECTURES</span>
-        </div>
-        <div class="flex items-center gap-4 sm:gap-6 text-slate-300 flex-wrap">
-          <span>IEEE 2024–2026 STANDARDS</span>
-          <span class="hidden md:inline text-slate-600">•</span>
-          <span class="hidden md:inline">COMPLETE SOURCE CODE &amp; CIRCUIT DIAGRAMS</span>
-          <span class="hidden md:inline text-slate-600">•</span>
-          <span>AFFORDABLE STUDENT TIERS</span>
-        </div>
-        <a 
-          href="#"
-          data-config-href="whatsapp"
-          data-whatsapp-msg="haveRequirement"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-cyan-400 hover:text-cyan-300 uppercase flex items-center gap-1 font-semibold transition-colors"
-        >
-          <span>Verify Your Project Topic</span>
-          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- ========================================================================= -->
-    <!-- 3. ABOUT US SECTION                                                       -->
-    <!-- ========================================================================= -->
-    <section id="about" class="py-20 md:py-28 bg-slate-50">
-      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Section Header -->
-        <div class="flex flex-col gap-2 max-w-3xl mb-12">
-          <span class="font-mono text-xs text-blue-600 uppercase font-semibold tracking-wider">// 01_ABOUT_OUR_STUDIO</span>
-          <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[#0B1220]">
-            Engineering Ideas Into Reality
-          </h2>
-          <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
-            We believe every engineering student deserves the opportunity to build something genuine, innovative, and functional without extortionate agency fees. Our mission is to make custom engineering project development accessible, educational, and affordable for students across all engineering branches.
-          </p>
-        </div>
-
-        <!-- Mission Callout Box -->
-        <div class="p-6 md:p-8 rounded-2xl bg-white border border-slate-200 shadow-sm mb-14 relative overflow-hidden">
-          <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
-            <div class="flex items-start gap-4">
-              <div class="icon-slope icon-slope-blue w-12 h-12 text-blue-600 shrink-0">
-                <span class="material-symbols-outlined text-[28px]">rocket_launch</span>
-              </div>
-              <div>
-                <span class="font-mono text-xs text-cyan-600 uppercase font-semibold">STUDIO CORE MISSION</span>
-                <p class="font-display text-lg sm:text-xl font-bold text-[#0B1220] mt-1">
-                  "To make innovative, production-grade engineering projects accessible and truly affordable for every student."
-                </p>
-              </div>
-            </div>
-            <a 
-              href="#"
-              data-config-href="whatsapp"
-              data-whatsapp-msg="general"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-slope btn-slope-primary shrink-0 px-5 py-3 text-sm"
-            >
-              Talk to an Engineer
-            </a>
-          </div>
-        </div>
-
-        <!-- 6-Point Approach Blueprint Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- Card 1 -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between gap-4 card-hover-elevation">
-            <div class="flex items-start justify-between">
-              <div class="icon-slope icon-slope-blue w-10 h-10 font-mono font-bold text-blue-600">01</div>
-              <span class="font-mono text-xs text-slate-400">// REQUIREMENT_SYNC</span>
-            </div>
-            <div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">We Understand Student Needs</h3>
-              <p class="text-sm text-slate-600 leading-relaxed">
-                We review your university syllabus, department rubrics, individual technical strengths, and submission deadlines before proposing any hardware or code.
-              </p>
-            </div>
-            <div class="font-mono text-xs text-cyan-600 uppercase tracking-wide font-semibold">Targeted Analysis</div>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between gap-4 card-hover-elevation">
-            <div class="flex items-start justify-between">
-              <div class="icon-slope icon-slope-blue w-10 h-10 font-mono font-bold text-blue-600">02</div>
-              <span class="font-mono text-xs text-slate-400">// TOPIC_IDEATION</span>
-            </div>
-            <div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">We Suggest Suitable Ideas</h3>
-              <p class="text-sm text-slate-600 leading-relaxed">
-                Stuck for a topic? We brainstorm novel, socially impactful IEEE-based project concepts that impress external examiners and hackathon juries.
-              </p>
-            </div>
-            <div class="font-mono text-xs text-cyan-600 uppercase tracking-wide font-semibold">Custom Scopes</div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between gap-4 card-hover-elevation">
-            <div class="flex items-start justify-between">
-              <div class="icon-slope icon-slope-blue w-10 h-10 font-mono font-bold text-blue-600">03</div>
-              <span class="font-mono text-xs text-slate-400">// TECH_SELECTION</span>
-            </div>
-            <div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">Right Tech Identification</h3>
-              <p class="text-sm text-slate-600 leading-relaxed">
-                We select optimal microcontrollers, sensor arrays, software frameworks, and cloud suites that match requirements without component cost inflation.
-              </p>
-            </div>
-            <div class="font-mono text-xs text-cyan-600 uppercase tracking-wide font-semibold">Cost-Efficient Specs</div>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between gap-4 card-hover-elevation">
-            <div class="flex items-start justify-between">
-              <div class="icon-slope icon-slope-blue w-10 h-10 font-mono font-bold text-blue-600">04</div>
-              <span class="font-mono text-xs text-slate-400">// CUSTOM_DEV</span>
-            </div>
-            <div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">Customized Solutions</h3>
-              <p class="text-sm text-slate-600 leading-relaxed">
-                Every project is engineered from scratch. Custom-commented code, verified circuit schematics, and bench-tested physical enclosures.
-              </p>
-            </div>
-            <div class="font-mono text-xs text-cyan-600 uppercase tracking-wide font-semibold">No Copy-Paste Builds</div>
-          </div>
-
-          <!-- Card 5 -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between gap-4 card-hover-elevation">
-            <div class="flex items-start justify-between">
-              <div class="icon-slope icon-slope-blue w-10 h-10 font-mono font-bold text-blue-600">05</div>
-              <span class="font-mono text-xs text-slate-400">// STUDENT_BUDGET</span>
-            </div>
-            <div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">Affordable &amp; Practical</h3>
-              <p class="text-sm text-slate-600 leading-relaxed">
-                We eliminate middlemen markups to fit student pockets. Gain real hands-on engineering experience and confidence without commercial agency costs.
-              </p>
-            </div>
-            <div class="font-mono text-xs text-cyan-600 uppercase tracking-wide font-semibold">Pocket-Friendly Tiers</div>
-          </div>
-
-          <!-- Card 6 -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between gap-4 card-hover-elevation">
-            <div class="flex items-start justify-between">
-              <div class="icon-slope icon-slope-blue w-10 h-10 font-mono font-bold text-blue-600">06</div>
-              <span class="font-mono text-xs text-slate-400">// VIVA_CONFIDENCE</span>
-            </div>
-            <div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">Viva &amp; Knowledge Prep</h3>
-              <p class="text-sm text-slate-600 leading-relaxed">
-                Building the project is only half the battle. We coach you through line-by-line code explanation, circuit troubleshooting, and common viva questions.
-              </p>
-            </div>
-            <div class="font-mono text-xs text-cyan-600 uppercase tracking-wide font-semibold">100% Defense Confidence</div>
-          </div>
-
-        </div>
-
-        <!-- Comprehensive Project Delivery Package -->
-        <div class="mt-12 p-8 rounded-2xl bg-[#0B1220] text-white flex flex-col md:flex-row items-center justify-between gap-6 border border-cyan-500/20">
-          <div class="flex flex-col gap-1">
-            <span class="font-mono text-xs text-cyan-400 uppercase">// COMPLETE_DELIVERABLE_KIT</span>
-            <h4 class="font-display text-xl font-bold text-white">Full Academic Project Delivery Package</h4>
-            <p class="text-sm text-slate-300">Every project comes with working prototype, source code, schematics, synopsis, and full documentation.</p>
-          </div>
-          <div class="flex flex-wrap items-center gap-2.5">
-            <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-cyan-300 font-mono text-xs font-semibold border border-slate-700">
-              ✓ Synopsis &amp; PPT
-            </span>
-            <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-cyan-300 font-mono text-xs font-semibold border border-slate-700">
-              ✓ Full IEEE Report
-            </span>
-            <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-cyan-300 font-mono text-xs font-semibold border border-slate-700">
-              ✓ Working Hardware
-            </span>
-            <span class="px-3 py-1.5 rounded-lg bg-slate-800 text-cyan-300 font-mono text-xs font-semibold border border-slate-700">
-              ✓ Circuit Schematics
-            </span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- 4. OUR SERVICES SECTION                                                   -->
-    <!-- ========================================================================= -->
-    <section id="services" class="py-20 md:py-28 bg-canvas">
-      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Section Header -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div class="flex flex-col gap-2 max-w-2xl">
-            <span class="font-mono text-xs text-blue-600 uppercase font-semibold tracking-wider">// 02_CORE_SERVICES</span>
-            <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[#0B1220]">
-              Engineered For Academic &amp; Innovation Success
-            </h2>
-            <p class="text-base sm:text-lg text-slate-600">
-              Explore our specialized development tracks. Every service is completely customized to your semester timeline, university guidelines, and student budget.
-            </p>
-          </div>
-          <a 
-            href="#"
-            data-config-href="whatsapp"
-            data-whatsapp-msg="haveRequirement"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-slope btn-slope-secondary px-5 py-3 text-sm gap-2 self-start md:self-auto"
-          >
-            <span class="material-symbols-outlined text-[18px]">help_center</span>
-            <span>Consult With Lab Engineers</span>
-          </a>
-        </div>
-
-        <!-- 8 Core Service Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          
-          <!-- Service 1: Final Year Major Projects -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between card-hover-elevation group">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="icon-slope icon-slope-blue w-12 h-12 text-blue-600">
-                  <span class="material-symbols-outlined text-[26px]">school</span>
-                </div>
-                <span class="font-mono text-[10px] text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full font-semibold uppercase">DEGREE CAPSTONE</span>
-              </div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">Final Year Major Projects</h3>
-              <p class="text-xs sm:text-sm text-slate-600 mb-4 leading-relaxed">
-                Comprehensive capstone projects for B.Tech, BE, and Polytechnic final years. End-to-end hardware fabrication, coding, and IEEE documentation.
-              </p>
-              <div class="flex flex-wrap gap-1.5 mb-6">
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Full Hardware</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">IEEE Thesis</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Viva Coaching</span>
-              </div>
-            </div>
-            <a 
-              href="#"
-              data-config-href="whatsapp"
-              data-whatsapp-msg="degreeTrack"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-slope btn-slope-secondary w-full py-2.5 px-3 text-xs sm:text-sm font-semibold flex items-center justify-between text-blue-600"
-            >
-              <span>Discuss Major Project</span>
-              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-            </a>
-          </div>
-
-          <!-- Service 2: Mini Projects -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between card-hover-elevation group">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="icon-slope icon-slope-cyan w-12 h-12 text-cyan-600">
-                  <span class="material-symbols-outlined text-[26px]">construction</span>
-                </div>
-                <span class="font-mono text-[10px] text-cyan-700 bg-cyan-50 px-2.5 py-1 rounded-full font-semibold uppercase">FAST LAB</span>
-              </div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">Semester Mini Projects</h3>
-              <p class="text-xs sm:text-sm text-slate-600 mb-4 leading-relaxed">
-                Fast-turnaround, budget-friendly implementations engineered for intermediate semester lab courses. Clear circuits and intuitive operation.
-              </p>
-              <div class="flex flex-wrap gap-1.5 mb-6">
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Quick Turnaround</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Pocket-Friendly</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Ready Explanations</span>
-              </div>
-            </div>
-            <a 
-              href="#"
-              data-config-href="whatsapp"
-              data-whatsapp-msg="miniProject"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-slope btn-slope-secondary w-full py-2.5 px-3 text-xs sm:text-sm font-semibold flex items-center justify-between text-blue-600"
-            >
-              <span>Discuss Mini Project</span>
-              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-            </a>
-          </div>
-
-          <!-- Service 3: IoT & Cloud Projects -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between card-hover-elevation group">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="icon-slope icon-slope-blue w-12 h-12 text-blue-600">
-                  <span class="material-symbols-outlined text-[26px]">wifi_tethering</span>
-                </div>
-                <span class="font-mono text-[10px] text-cyan-700 bg-cyan-50 px-2.5 py-1 rounded-full font-semibold uppercase">CONNECTED</span>
-              </div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">IoT &amp; Cloud Telemetry</h3>
-              <p class="text-xs sm:text-sm text-slate-600 mb-4 leading-relaxed">
-                Multi-sensor wireless nodes using ESP32, NodeMCU, LoRaWAN, MQTT, and cloud dashboards (AWS, Firebase, Blynk) for automated alerts.
-              </p>
-              <div class="flex flex-wrap gap-1.5 mb-6">
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">ESP32 / LoRa</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Cloud Dashboard</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Mobile Alerts</span>
-              </div>
-            </div>
-            <a 
-              href="#"
-              data-config-href="whatsapp"
-              data-whatsapp-msg="iotProject"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-slope btn-slope-secondary w-full py-2.5 px-3 text-xs sm:text-sm font-semibold flex items-center justify-between text-blue-600"
-            >
-              <span>Discuss IoT Project</span>
-              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-            </a>
-          </div>
-
-          <!-- Service 4: AI & Machine Learning -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between card-hover-elevation group">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="icon-slope icon-slope-blue w-12 h-12 text-indigo-600">
-                  <span class="material-symbols-outlined text-[26px]">neurology</span>
-                </div>
-                <span class="font-mono text-[10px] text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full font-semibold uppercase">INTELLIGENCE</span>
-              </div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">AI &amp; Machine Learning</h3>
-              <p class="text-xs sm:text-sm text-slate-600 mb-4 leading-relaxed">
-                Computer vision (OpenCV, YOLO), Deep Learning (PyTorch/TensorFlow), NLP, and edge AI inferencing on Raspberry Pi and Jetson platforms.
-              </p>
-              <div class="flex flex-wrap gap-1.5 mb-6">
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">YOLO / OpenCV</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Custom Dataset</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Web Demo GUI</span>
-              </div>
-            </div>
-            <a 
-              href="#"
-              data-config-href="whatsapp"
-              data-whatsapp-msg="aimlProject"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-slope btn-slope-secondary w-full py-2.5 px-3 text-xs sm:text-sm font-semibold flex items-center justify-between text-blue-600"
-            >
-              <span>Discuss AI/ML Project</span>
-              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-            </a>
-          </div>
-
-          <!-- Service 5: Software & Web Development -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between card-hover-elevation group">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="icon-slope icon-slope-blue w-12 h-12 text-blue-600">
-                  <span class="material-symbols-outlined text-[26px]">terminal</span>
-                </div>
-                <span class="font-mono text-[10px] text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full font-semibold uppercase">FULL-STACK</span>
-              </div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">Software &amp; Web Apps</h3>
-              <p class="text-xs sm:text-sm text-slate-600 mb-4 leading-relaxed">
-                Modern full-stack web and mobile apps. React, Next.js, Node.js, Python FastAPI, PostgreSQL, and clean examiner-friendly dashboards.
-              </p>
-              <div class="flex flex-wrap gap-1.5 mb-6">
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">React / Next.js</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">FastAPI / Node</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Cloud Hosted</span>
-              </div>
-            </div>
-            <a 
-              href="#"
-              data-config-href="whatsapp"
-              data-whatsapp-msg="softwareProject"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-slope btn-slope-secondary w-full py-2.5 px-3 text-xs sm:text-sm font-semibold flex items-center justify-between text-blue-600"
-            >
-              <span>Discuss Software Project</span>
-              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-            </a>
-          </div>
-
-          <!-- Service 6: Hardware & Embedded Systems -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between card-hover-elevation group">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="icon-slope icon-slope-blue w-12 h-12 text-emerald-600">
-                  <span class="material-symbols-outlined text-[26px]">developer_board</span>
-                </div>
-                <span class="font-mono text-[10px] text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full font-semibold uppercase">HARDWARE / PCB</span>
-              </div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">Hardware &amp; Embedded</h3>
-              <p class="text-xs sm:text-sm text-slate-600 mb-4 leading-relaxed">
-                STM32, Arduino, PIC, custom schematic and PCB routing via KiCAD, sensor calibrations, power management, and firmware in C/C++.
-              </p>
-              <div class="flex flex-wrap gap-1.5 mb-6">
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">KiCAD PCB</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Bare-Metal C++</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">STM32 / AVR</span>
-              </div>
-            </div>
-            <a 
-              href="#"
-              data-config-href="whatsapp"
-              data-whatsapp-msg="embeddedProject"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-slope btn-slope-secondary w-full py-2.5 px-3 text-xs sm:text-sm font-semibold flex items-center justify-between text-blue-600"
-            >
-              <span>Discuss Embedded Project</span>
-              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-            </a>
-          </div>
-
-          <!-- Service 7: Robotics & Automation -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between card-hover-elevation group">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="icon-slope icon-slope-cyan w-12 h-12 text-cyan-600">
-                  <span class="material-symbols-outlined text-[26px]">smart_toy</span>
-                </div>
-                <span class="font-mono text-[10px] text-cyan-700 bg-cyan-50 px-2.5 py-1 rounded-full font-semibold uppercase">MECHATRONICS</span>
-              </div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">Robotics &amp; Automation</h3>
-              <p class="text-xs sm:text-sm text-slate-600 mb-4 leading-relaxed">
-                Robotic arms, omnidirectional rovers, inverse kinematics, AGVs, obstacle avoidance, and gesture/vision based mechanical control loops.
-              </p>
-              <div class="flex flex-wrap gap-1.5 mb-6">
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Robotic Arms</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Kinematics</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Mecanum Wheels</span>
-              </div>
-            </div>
-            <a 
-              href="#"
-              data-config-href="whatsapp"
-              data-whatsapp-msg="roboticsProject"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-slope btn-slope-secondary w-full py-2.5 px-3 text-xs sm:text-sm font-semibold flex items-center justify-between text-blue-600"
-            >
-              <span>Discuss Robotics Project</span>
-              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-            </a>
-          </div>
-
-          <!-- Service 8: Custom R&D & Hackathons -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between card-hover-elevation group">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="icon-slope icon-slope-blue w-12 h-12 text-purple-600">
-                  <span class="material-symbols-outlined text-[26px]">hub</span>
-                </div>
-                <span class="font-mono text-[10px] text-purple-700 bg-purple-50 px-2.5 py-1 rounded-full font-semibold uppercase">INNOVATION</span>
-              </div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">Custom R&amp;D Ideation</h3>
-              <p class="text-xs sm:text-sm text-slate-600 mb-4 leading-relaxed">
-                Unique patent concepts, interdisciplinary blends (AI + IoT + Mechanical), hackathon prototypes, and custom hardware integration.
-              </p>
-              <div class="flex flex-wrap gap-1.5 mb-6">
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Novel Invention</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Hackathon Ready</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 bg-slate-100 rounded text-slate-600">Cross-Discipline</span>
-              </div>
-            </div>
-            <a 
-              href="#"
-              data-config-href="whatsapp"
-              data-whatsapp-msg="customRd"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-slope btn-slope-secondary w-full py-2.5 px-3 text-xs sm:text-sm font-semibold flex items-center justify-between text-blue-600"
-            >
-              <span>Discuss Custom Idea</span>
-              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-            </a>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- 5. DOMAINS WE WORK WITH                                                   -->
-    <!-- ========================================================================= -->
-    <section id="domains" class="py-20 md:py-28 bg-slate-50">
-      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="flex flex-col gap-2 max-w-3xl mb-12">
-          <span class="font-mono text-xs text-blue-600 uppercase font-semibold tracking-wider">// 03_SPECIALIZATION_DOMAINS</span>
-          <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[#0B1220]">
-            Multi-Branch Engineering Ecosystem
-          </h2>
-          <p class="text-base sm:text-lg text-slate-600">
-            Whatever your branch or curriculum, we possess dedicated toolchains, laboratory testbenches, and verified software libraries.
-          </p>
-        </div>
-
-        <!-- 6 Main Domain Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- Domain 1: ECE -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col gap-4 card-hover-elevation">
-            <div class="flex items-center gap-3">
-              <div class="icon-slope icon-slope-blue w-10 h-10 text-blue-600">
-                <span class="material-symbols-outlined text-[24px]">electrical_services</span>
-              </div>
-              <div>
-                <h3 class="font-display text-base font-bold text-[#0B1220]">Electronics &amp; Comm (ECE)</h3>
-                <span class="font-mono text-[11px] text-slate-500">CIRCUITS, RF &amp; SIGNAL CHAINS</span>
-              </div>
-            </div>
-            <ul class="flex flex-col gap-2 text-xs sm:text-sm text-slate-600">
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Embedded Systems &amp; Microcontrollers</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Wireless RF (LoRa, BLE, Zigbee, ESP-NOW)</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Custom PCB Design &amp; KiCAD Schematics</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>VLSI Concepts &amp; FPGA Interfacing</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Sensor Signal Conditioning &amp; Filters</li>
-            </ul>
-          </div>
-
-          <!-- Domain 2: CSE & IT -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col gap-4 card-hover-elevation">
-            <div class="flex items-center gap-3">
-              <div class="icon-slope icon-slope-blue w-10 h-10 text-blue-600">
-                <span class="material-symbols-outlined text-[24px]">code</span>
-              </div>
-              <div>
-                <h3 class="font-display text-base font-bold text-[#0B1220]">Computer Science (CSE / IT)</h3>
-                <span class="font-mono text-[11px] text-slate-500">CLOUD &amp; SOFTWARE SYSTEMS</span>
-              </div>
-            </div>
-            <ul class="flex flex-col gap-2 text-xs sm:text-sm text-slate-600">
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Full-Stack Web (React, Node, FastAPI)</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Mobile Applications (Flutter, React Native)</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Cloud Telemetry &amp; Microservices</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Cybersecurity &amp; Network Packet Inspection</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Database Architecture &amp; Analytics</li>
-            </ul>
-          </div>
-
-          <!-- Domain 3: AI & Machine Learning -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col gap-4 card-hover-elevation">
-            <div class="flex items-center gap-3">
-              <div class="icon-slope icon-slope-blue w-10 h-10 text-indigo-600">
-                <span class="material-symbols-outlined text-[24px]">psychology_alt</span>
-              </div>
-              <div>
-                <h3 class="font-display text-base font-bold text-[#0B1220]">AI &amp; Machine Learning</h3>
-                <span class="font-mono text-[11px] text-slate-500">VISION &amp; DATA SCIENCE</span>
-              </div>
-            </div>
-            <ul class="flex flex-col gap-2 text-xs sm:text-sm text-slate-600">
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Computer Vision with YOLOv8 &amp; OpenCV</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Deep Learning Neural Nets (PyTorch / TF)</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Natural Language Processing &amp; Audio</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Edge AI Deployment (Raspberry Pi, Jetson)</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Custom Dataset Annotation &amp; Metrics</li>
-            </ul>
-          </div>
-
-          <!-- Domain 4: IoT -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col gap-4 card-hover-elevation">
-            <div class="flex items-center gap-3">
-              <div class="icon-slope icon-slope-cyan w-10 h-10 text-cyan-600">
-                <span class="material-symbols-outlined text-[24px]">sensors</span>
-              </div>
-              <div>
-                <h3 class="font-display text-base font-bold text-[#0B1220]">Internet of Things (IoT)</h3>
-                <span class="font-mono text-[11px] text-slate-500">SMART CONNECTED HARDWARE</span>
-              </div>
-            </div>
-            <ul class="flex flex-col gap-2 text-xs sm:text-sm text-slate-600">
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Smart Agriculture &amp; Environmental Arrays</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Industrial IoT &amp; Machine Telemetry</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Smart Home Automation Hubs</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>ESP32 / NodeMCU / Arduino Stacks</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>MQTT, InfluxDB &amp; Grafana Visuals</li>
-            </ul>
-          </div>
-
-          <!-- Domain 5: Robotics & Mechatronics -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col gap-4 card-hover-elevation">
-            <div class="flex items-center gap-3">
-              <div class="icon-slope icon-slope-cyan w-10 h-10 text-cyan-600">
-                <span class="material-symbols-outlined text-[24px]">precision_manufacturing</span>
-              </div>
-              <div>
-                <h3 class="font-display text-base font-bold text-[#0B1220]">Robotics &amp; Mechatronics</h3>
-                <span class="font-mono text-[11px] text-slate-500">KINEMATICS &amp; ACTUATION</span>
-              </div>
-            </div>
-            <ul class="flex flex-col gap-2 text-xs sm:text-sm text-slate-600">
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Autonomous Obstacle Avoidance Rovers</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Articulated Robotic Manipulators (DOF)</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Mecanum Wheel Omnidirectional Drive</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Line Tracking &amp; Ultrasonic AGVs</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Servo Drivers &amp; High-Torque Motors</li>
-            </ul>
-          </div>
-
-          <!-- Domain 6: Electrical & Mechanical (EEE/ME) -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col gap-4 card-hover-elevation">
-            <div class="flex items-center gap-3">
-              <div class="icon-slope icon-slope-blue w-10 h-10 text-amber-500">
-                <span class="material-symbols-outlined text-[24px]">bolt</span>
-              </div>
-              <div>
-                <h3 class="font-display text-base font-bold text-[#0B1220]">Electrical &amp; Mechanical</h3>
-                <span class="font-mono text-[11px] text-slate-500">POWER, MOTORS &amp; MECHANISMS</span>
-              </div>
-            </div>
-            <ul class="flex flex-col gap-2 text-xs sm:text-sm text-slate-600">
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Solar MPPT Tracking &amp; Renewables</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>EV Battery Telemetry &amp; BMS</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Smart Grid &amp; Automated Metering</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Motor Speed Controllers &amp; Inverters</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Conveyor Belts &amp; Mechanical Grippers</li>
-            </ul>
-          </div>
-
-        </div>
-
-        <!-- Domain Beyond Callout Banner -->
-        <div class="mt-10 p-8 rounded-2xl bg-[#0B1220] text-white flex flex-col md:flex-row items-center justify-between gap-6 border border-cyan-500/20">
-          <div class="flex items-center gap-4">
-            <div class="icon-slope icon-slope-dark w-12 h-12 text-cyan-400 shrink-0 border border-cyan-500/40">
-              <span class="material-symbols-outlined text-[26px]">lightbulb</span>
-            </div>
-            <div>
-              <h4 class="font-display text-lg font-bold text-white">Have an Idea Beyond These Domains?</h4>
-              <p class="text-xs sm:text-sm text-slate-300 mt-0.5">
-                Tell us what you are planning! We welcome interdisciplinary blends, Civil sensor networks, Biomedical prototypes, and novel patent concepts.
-              </p>
-            </div>
-          </div>
-          <a 
-            href="#"
-            data-config-href="whatsapp"
-            data-whatsapp-msg="unconventionalIdea"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-slope btn-slope-cyan shrink-0 px-6 py-3 text-sm font-bold"
-          >
-            Share Your Idea
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- 6. PROJECT SHOWCASE GALLERY (PORTFOLIO)                                   -->
-    <!-- ========================================================================= -->
-    <section id="portfolio" class="py-20 md:py-28 bg-canvas">
-      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Section Header -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
-          <div class="flex flex-col gap-2 max-w-2xl">
-            <span class="font-mono text-xs text-blue-600 uppercase font-semibold tracking-wider">// 04_PROVEN_PROTOTYPES</span>
-            <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[#0B1220]">
-              Built With Innovation. Driven By Technology.
-            </h2>
-            <p class="text-base sm:text-lg text-slate-600">
-              Explore benchmark prototypes personally designed, coded, and tested at our lab. All case studies are ready for demonstration and fully adaptable to your college guidelines.
-            </p>
-          </div>
-          <div id="portfolio-count-badge" class="font-mono text-xs text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 self-start md:self-auto">
-            LOADING PROJECTS...
-          </div>
-        </div>
-
-        <!-- Controls Bar: Filter Tabs & Real-Time Search -->
-        <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-10 pb-4 border-b border-slate-200">
-          
-          <!-- Category Filter Tabs -->
-          <div class="flex flex-wrap items-center gap-2" id="portfolio-filter-container">
-            <button type="button" class="portfolio-tab btn-slope btn-slope-primary filter-tab-active px-4 py-2 rounded-xl font-display text-xs sm:text-sm font-semibold text-white" data-category="all">
-              All Projects
-            </button>
-            <button type="button" class="portfolio-tab btn-slope btn-slope-secondary px-4 py-2 rounded-xl font-display text-xs sm:text-sm font-semibold text-slate-700" data-category="iot">
-              IoT Systems
-            </button>
-            <button type="button" class="portfolio-tab btn-slope btn-slope-secondary px-4 py-2 rounded-xl font-display text-xs sm:text-sm font-semibold text-slate-700" data-category="robotics">
-              Robotics
-            </button>
-            <button type="button" class="portfolio-tab btn-slope btn-slope-secondary px-4 py-2 rounded-xl font-display text-xs sm:text-sm font-semibold text-slate-700" data-category="ai">
-              AI &amp; Vision
-            </button>
-            <button type="button" class="portfolio-tab btn-slope btn-slope-secondary px-4 py-2 rounded-xl font-display text-xs sm:text-sm font-semibold text-slate-700" data-category="hardware">
-              Hardware &amp; Embedded
-            </button>
-            <button type="button" class="portfolio-tab btn-slope btn-slope-secondary px-4 py-2 rounded-xl font-display text-xs sm:text-sm font-semibold text-slate-700" data-category="software">
-              Software &amp; SCADA
-            </button>
-          </div>
-
-          <!-- Instant Keyword Search -->
-          <div class="relative min-w-[240px] md:max-w-xs">
-            <input 
-              type="text" 
-              id="portfolio-search-input"
-              placeholder="Search by keyword, tech, or topic..."
-              class="w-full pl-9 pr-4 py-2 rounded-xl bg-white border border-slate-200 text-xs sm:text-sm text-[#0B1220] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
-            />
-            <span class="material-symbols-outlined absolute left-2.5 top-2.5 text-slate-400 text-[18px]">search</span>
-          </div>
-
-        </div>
-
-        <!-- Dynamic Portfolio Grid Container -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
-          <!-- Dynamically populated via assets/js/main.js from assets/js/projects-data.js -->
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- 7. WHY CHOOSE US (6 STUDENT TRUST PILLARS)                                -->
-    <!-- ========================================================================= -->
-    <section id="why-choose-us" class="py-20 md:py-28 bg-slate-50">
-      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="flex flex-col items-center text-center gap-2 max-w-2xl mx-auto mb-16">
-          <span class="font-mono text-xs text-blue-600 uppercase font-semibold tracking-wider">// 05_STUDENT_TRUST_PILLARS</span>
-          <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[#0B1220]">
-            Why Engineering Students Choose Us
-          </h2>
-          <p class="text-base sm:text-lg text-slate-600">
-            We bridge the gap between academic theory, faculty grading expectations, and practical engineering execution.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- Pillar 1 -->
-          <div class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col gap-3 card-hover-elevation">
-            <div class="w-12 h-12 rounded-xl icon-slope icon-slope-blue flex items-center justify-center mb-2">
-              <span class="material-symbols-outlined text-[26px]">savings</span>
-            </div>
-            <h3 class="font-display text-lg font-bold text-[#0B1220]">Affordable Student Pricing</h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              No extortionate commercial agency fees. We offer modular, student-pocket-friendly project budgets with flexible milestone payments.
-            </p>
-          </div>
-
-          <!-- Pillar 2 -->
-          <div class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col gap-3 card-hover-elevation">
-            <div class="w-12 h-12 rounded-xl icon-slope icon-slope-blue flex items-center justify-center mb-2">
-              <span class="material-symbols-outlined text-[26px]">integration_instructions</span>
-            </div>
-            <h3 class="font-display text-lg font-bold text-[#0B1220]">Multiple Technology Domains</h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              From bare-metal microcontrollers to deep neural networks and web apps, we integrate mechanical parts, embedded chips, and cloud software under one roof.
-            </p>
-          </div>
-
-          <!-- Pillar 3 -->
-          <div class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col gap-3 card-hover-elevation">
-            <div class="w-12 h-12 rounded-xl icon-slope icon-slope-blue flex items-center justify-center mb-2">
-              <span class="material-symbols-outlined text-[26px]">tune</span>
-            </div>
-            <h3 class="font-display text-lg font-bold text-[#0B1220]">100% Customized Development</h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Zero cookie-cutter recycled projects. Every schematic, source code repository, and report is built specifically to your college rubrics and faculty guidelines.
-            </p>
-          </div>
-
-          <!-- Pillar 4 -->
-          <div class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col gap-3 card-hover-elevation">
-            <div class="w-12 h-12 rounded-xl icon-slope icon-slope-blue flex items-center justify-center mb-2">
-              <span class="material-symbols-outlined text-[26px]">tips_and_updates</span>
-            </div>
-            <h3 class="font-display text-lg font-bold text-[#0B1220]">Innovative &amp; Unique Concepts</h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Stand out in front of external examiners, university project review committees, and competitive hackathon juries with cutting-edge, novel engineering designs.
-            </p>
-          </div>
-
-          <!-- Pillar 5 -->
-          <div class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col gap-3 card-hover-elevation">
-            <div class="w-12 h-12 rounded-xl icon-slope icon-slope-blue flex items-center justify-center mb-2">
-              <span class="material-symbols-outlined text-[26px]">menu_book</span>
-            </div>
-            <h3 class="font-display text-lg font-bold text-[#0B1220]">Deep Viva &amp; Practical Prep</h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              We don't just hand over a completed kit. We conduct thorough 1-on-1 walkthroughs so you understand every single line of code and circuit trace to score top marks.
-            </p>
-          </div>
-
-          <!-- Pillar 6 -->
-          <div class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col gap-3 card-hover-elevation">
-            <div class="w-12 h-12 rounded-xl icon-slope icon-slope-blue flex items-center justify-center mb-2">
-              <span class="material-symbols-outlined text-[26px]">forum</span>
-            </div>
-            <h3 class="font-display text-lg font-bold text-[#0B1220]">Direct WhatsApp Communication</h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Talk directly to the engineers developing your project. Receive real-time progress videos, quick technical answers, and zero bureaucratic sales middlemen.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- 8. PROJECT IDEA CONSULTATION                                              -->
-    <!-- ========================================================================= -->
-    <section id="consultation" class="py-20 md:py-28 bg-canvas">
-      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="p-8 md:p-12 lg:p-14 rounded-3xl bg-slate-900 text-white relative overflow-hidden border border-cyan-500/20 tech-glow-navy">
-          
-          <div class="flex flex-col gap-3 max-w-2xl mb-12 relative z-10">
-            <span class="font-mono text-xs text-cyan-400 font-semibold uppercase tracking-wider">// 06_DECISION_SUPPORT</span>
-            <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-              Confused About What Project to Build?
-            </h2>
-            <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
-              Not sure which project topic fits your engineering branch, coding experience, or final semester budget? We will help you identify the ideal project direction in minutes.
-            </p>
-          </div>
-
-          <!-- 3 Distinct Action Pathways -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-            
-            <!-- Pathway A: Need Ideas -->
-            <div class="p-6 rounded-2xl bg-[#0B1220] border border-slate-800 shadow-md flex flex-col justify-between gap-6 hover:border-cyan-500/40 transition-colors">
-              <div class="flex flex-col gap-2.5">
-                <div class="w-11 h-11 rounded-xl icon-slope icon-slope-blue flex items-center justify-center">
-                  <span class="material-symbols-outlined text-[22px]">lightbulb</span>
-                </div>
-                <h3 class="font-display text-lg font-bold text-white">Need a Project Idea?</h3>
-                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                  Tell us your engineering branch and interests, and we will send you 3 to 5 trending IEEE-based project concepts.
-                </p>
-              </div>
-              <a 
-                href="#"
-                data-config-href="whatsapp"
-                data-whatsapp-msg="needIdea"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn-slope btn-slope-primary w-full py-3 rounded-xl text-white font-display text-xs sm:text-sm font-bold text-center inline-flex items-center justify-center gap-2"
-              >
-                <span class="material-symbols-outlined text-[18px]">lightbulb</span>
-                <span>Get Project Ideas</span>
-              </a>
-            </div>
-
-            <!-- Pathway B: Have Requirement -->
-            <div class="p-6 rounded-2xl bg-[#0B1220] border border-slate-800 shadow-md flex flex-col justify-between gap-6 hover:border-cyan-500/40 transition-colors">
-              <div class="flex flex-col gap-2.5">
-                <div class="w-11 h-11 rounded-xl icon-slope icon-slope-cyan flex items-center justify-center">
-                  <span class="material-symbols-outlined text-[22px]">design_services</span>
-                </div>
-                <h3 class="font-display text-lg font-bold text-white">Have a Requirement?</h3>
-                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                  Already have a topic approved by your college guide? Share your problem statement for technical feasibility and circuit analysis.
-                </p>
-              </div>
-              <a 
-                href="#"
-                data-config-href="whatsapp"
-                data-whatsapp-msg="haveRequirement"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn-slope btn-slope-cyan w-full py-3 rounded-xl text-[#0B1220] font-display text-xs sm:text-sm font-bold text-center inline-flex items-center justify-center gap-2"
-              >
-                <span class="material-symbols-outlined text-[18px]">engineering</span>
-                <span>Discuss My Project</span>
-              </a>
-            </div>
-
-            <!-- Pathway C: Ask for Pricing -->
-            <div class="p-6 rounded-2xl bg-[#0B1220] border border-slate-800 shadow-md flex flex-col justify-between gap-6 hover:border-cyan-500/40 transition-colors">
-              <div class="flex flex-col gap-2.5">
-                <div class="w-11 h-11 rounded-xl icon-slope icon-slope-emerald flex items-center justify-center">
-                  <span class="material-symbols-outlined text-[22px]">account_balance_wallet</span>
-                </div>
-                <h3 class="font-display text-lg font-bold text-white">Want to Know the Price?</h3>
-                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                  Curious what a specific hardware build or software app will cost? Request a free, custom budget estimate tailored to your team.
-                </p>
-              </div>
-              <a 
-                href="#"
-                data-config-href="whatsapp"
-                data-whatsapp-msg="askPricing"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn-slope btn-slope-dark w-full py-3 rounded-xl text-white font-display text-xs sm:text-sm font-bold text-center inline-flex items-center justify-center gap-2"
-              >
-                <span class="material-symbols-outlined text-[18px]">request_quote</span>
-                <span>Ask for Pricing</span>
-              </a>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- 9. HOW IT WORKS PIPELINE                                                  -->
-    <!-- ========================================================================= -->
-    <section id="how-it-works" class="py-20 md:py-28 bg-slate-50">
-      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="flex flex-col gap-2 max-w-3xl mb-16">
-          <span class="font-mono text-xs text-blue-600 uppercase font-semibold tracking-wider">// 07_WORKFLOW_ARCHITECTURE</span>
-          <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[#0B1220]">
-            How It Works: From Concept to Final Demo
-          </h2>
-          <p class="text-base sm:text-lg text-slate-600">
-            A transparent, milestone-driven engineering methodology designed for zero stress and maximum academic scoring.
-          </p>
-        </div>
-
-        <!-- 4-Step Pipeline -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-          
-          <!-- Step 1 -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between gap-6 card-hover-elevation">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-3xl font-bold font-display text-blue-600">01</span>
-                <div class="w-10 h-10 rounded-xl icon-slope icon-slope-blue flex items-center justify-center">
-                  <span class="material-symbols-outlined text-[20px]">chat_bubble_outline</span>
-                </div>
-              </div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">Share Requirements</h3>
-              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Tell us your engineering branch, semester timeline, syllabus guidelines, and any specific preferences or components you wish to use.
-              </p>
-            </div>
-            <div class="font-mono text-[11px] text-slate-400 uppercase">Phase 01 // Requirement Intake</div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between gap-6 card-hover-elevation">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-3xl font-bold font-display text-blue-600">02</span>
-                <div class="w-10 h-10 rounded-xl icon-slope icon-slope-cyan flex items-center justify-center">
-                  <span class="material-symbols-outlined text-[20px]">science</span>
-                </div>
-              </div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">Explore Ideas</h3>
-              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                We analyze feasibility, propose optimal system architectures, select microcontrollers, and finalize the project scope approved by your guide.
-              </p>
-            </div>
-            <div class="font-mono text-[11px] text-slate-400 uppercase">Phase 02 // Feasibility Lock</div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between gap-6 card-hover-elevation">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-3xl font-bold font-display text-blue-600">03</span>
-                <div class="w-10 h-10 rounded-xl icon-slope icon-slope-blue flex items-center justify-center">
-                  <span class="material-symbols-outlined text-[20px]">calculate</span>
-                </div>
-              </div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">Discuss Budget</h3>
-              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Receive an honest, transparent quotation built around your student budget with zero hidden component surprises or surprise bills.
-              </p>
-            </div>
-            <div class="font-mono text-[11px] text-slate-400 uppercase">Phase 03 // Student Quote</div>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between gap-6 card-hover-elevation">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-3xl font-bold font-display text-blue-600">04</span>
-                <div class="w-10 h-10 rounded-xl icon-slope icon-slope-emerald flex items-center justify-center">
-                  <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
-                </div>
-              </div>
-              <h3 class="font-display text-base sm:text-lg font-bold text-[#0B1220] mb-2">Start Building</h3>
-              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Milestone development begins. You receive regular progress videos, code repositories, circuit diagrams, report documentation, and viva prep.
-              </p>
-            </div>
-            <div class="font-mono text-[11px] text-slate-400 uppercase">Phase 04 // Delivery &amp; Viva</div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- 10. CONTACT AND PROJECT ENQUIRY FORM                                      -->
-    <!-- ========================================================================= -->
-    <section id="contact" class="py-20 md:py-28 bg-canvas">
-      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
-          
-          <!-- Left Column: Validated Project Enquiry Form -->
-          <div class="lg:col-span-7 bg-white p-6 sm:p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm">
-            
-            <div class="flex flex-col gap-2 mb-8">
-              <span class="font-mono text-xs text-blue-600 uppercase font-semibold tracking-wider">// 08_PROJECT_INITIATION</span>
-              <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#0B1220]">
-                Let's Build Your Project Together
-              </h2>
-              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Submit your project details below. We review every enquiry within 2 hours during active lab hours to provide immediate technical feasibility and transparent pricing guidance.
-              </p>
-            </div>
-
-            <form id="project-enquiry-form" class="flex flex-col gap-5" novalidate>
-              
-              <!-- Row 1: Full Name & WhatsApp Number -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="flex flex-col gap-1.5">
-                  <label for="form-name" class="font-mono text-xs text-slate-700 font-semibold uppercase">[ FULL_NAME ] *</label>
-                  <input 
-                    type="text" 
-                    id="form-name" 
-                    placeholder="e.g. Rahul Sharma"
-                    required
-                    class="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-[#0B1220] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-colors"
-                  />
-                  <span id="form-name-error" class="field-error-msg hidden"></span>
-                </div>
-
-                <div class="flex flex-col gap-1.5">
-                  <label for="form-whatsapp" class="font-mono text-xs text-slate-700 font-semibold uppercase">[ WHATSAPP_NUMBER ] *</label>
-                  <input 
-                    type="tel" 
-                    id="form-whatsapp" 
-                    placeholder="e.g. +91 98765 43210"
-                    required
-                    class="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-[#0B1220] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-colors"
-                  />
-                  <span id="form-whatsapp-error" class="field-error-msg hidden"></span>
-                </div>
-              </div>
-
-              <!-- Row 2: Email Address -->
-              <div class="flex flex-col gap-1.5">
-                <label for="form-email" class="font-mono text-xs text-slate-700 font-semibold uppercase">[ EMAIL_ADDRESS ] *</label>
-                <input 
-                  type="email" 
-                  id="form-email" 
-                  placeholder="e.g. rahul.student@college.edu"
-                  required
-                  class="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-[#0B1220] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-colors"
-                />
-                <span id="form-email-error" class="field-error-msg hidden"></span>
-              </div>
-
-              <!-- Row 3: Engineering Branch & Education Level -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="flex flex-col gap-1.5">
-                  <label for="form-branch" class="font-mono text-xs text-slate-700 font-semibold uppercase">[ ENGINEERING_BRANCH ]</label>
-                  <select 
-                    id="form-branch"
-                    class="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-[#0B1220] focus:outline-none focus:ring-2 focus:ring-blue-600 transition-colors"
-                  >
-                    <option value="ECE">Electronics &amp; Comm (ECE)</option>
-                    <option value="CSE">Computer Science (CSE / IT)</option>
-                    <option value="AIML">AI &amp; Data Science</option>
-                    <option value="IOT">Internet of Things (IoT)</option>
-                    <option value="ROBOTICS">Robotics &amp; Automation</option>
-                    <option value="EMBEDDED">Embedded Systems</option>
-                    <option value="EEE">Electrical Engineering (EEE)</option>
-                    <option value="MECH">Mechanical Engineering</option>
-                    <option value="OTHER">Other Discipline</option>
-                  </select>
-                </div>
-
-                <div class="flex flex-col gap-1.5">
-                  <label for="form-level" class="font-mono text-xs text-slate-700 font-semibold uppercase">[ EDUCATION_LEVEL ]</label>
-                  <select 
-                    id="form-level"
-                    class="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-[#0B1220] focus:outline-none focus:ring-2 focus:ring-blue-600 transition-colors"
-                  >
-                    <option value="B.Tech Final Year">B.Tech / BE (Final Year Major)</option>
-                    <option value="B.Tech Pre-Final">B.Tech / BE (2nd / 3rd Year Mini)</option>
-                    <option value="Polytechnic Diploma">Polytechnic Diploma</option>
-                    <option value="M.Tech Postgrad">M.Tech / Postgraduate</option>
-                    <option value="Hackathon Team">Hackathon / Competition Team</option>
-                  </select>
-                </div>
-              </div>
-
-              <!-- Row 4: Primary Domain & What Do You Need? -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="flex flex-col gap-1.5">
-                  <label for="form-domain" class="font-mono text-xs text-slate-700 font-semibold uppercase">[ PRIMARY_DOMAIN ]</label>
-                  <select 
-                    id="form-domain"
-                    class="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-[#0B1220] focus:outline-none focus:ring-2 focus:ring-blue-600 transition-colors"
-                  >
-                    <option value="IoT">Internet of Things (IoT)</option>
-                    <option value="Robotics">Robotics &amp; Automation</option>
-                    <option value="AI / ML">Artificial Intelligence / Computer Vision</option>
-                    <option value="Embedded Systems">Hardware &amp; Embedded Systems</option>
-                    <option value="Software / Web">Software, Web &amp; Mobile App</option>
-                    <option value="Electrical / Mech">Electrical &amp; Mechanical Systems</option>
-                    <option value="Custom R&D">Interdisciplinary / Custom R&amp;D</option>
-                  </select>
-                </div>
-
-                <div class="flex flex-col gap-1.5">
-                  <label for="form-need" class="font-mono text-xs text-slate-700 font-semibold uppercase">[ SCOPE_NEEDED ]</label>
-                  <select 
-                    id="form-need"
-                    class="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-[#0B1220] focus:outline-none focus:ring-2 focus:ring-blue-600 transition-colors"
-                  >
-                    <option value="Complete Project Kit">Complete Project (Hardware + Code + Report)</option>
-                    <option value="Topic Ideas & Guidance">Need Topic Ideas &amp; Guidance</option>
-                    <option value="Hardware Fabrication Only">Hardware Circuit Fabrication Only</option>
-                    <option value="Software Code Only">Software Code &amp; Algorithm Only</option>
-                    <option value="Documentation & Viva Prep">Documentation, Synopsis &amp; Viva Prep</option>
-                  </select>
-                </div>
-              </div>
-
-              <!-- Row 5: Approximate Budget (Optional) -->
-              <div class="flex flex-col gap-1.5">
-                <label for="form-budget" class="font-mono text-xs text-slate-700 font-semibold uppercase">[ APPROXIMATE_BUDGET (OPTIONAL) ]</label>
-                <input 
-                  type="text" 
-                  id="form-budget" 
-                  placeholder="e.g. ₹3,000 - ₹5,000 or 'Need student quote'"
-                  class="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-[#0B1220] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-colors"
-                />
-              </div>
-
-              <!-- Row 6: Requirements Description -->
-              <div class="flex flex-col gap-1.5">
-                <label for="form-message" class="font-mono text-xs text-slate-700 font-semibold uppercase">[ PROJECT_REQUIREMENTS_DESCRIPTION ] *</label>
-                <textarea 
-                  id="form-message" 
-                  rows="4"
-                  placeholder="Describe your project topic, preferred sensors or tech, submission deadlines, or any questions..."
-                  required
-                  class="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-[#0B1220] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-colors"
-                ></textarea>
-                <span id="form-message-error" class="field-error-msg hidden"></span>
-              </div>
-
-              <!-- Dynamic Status / Alert Box (Prepared for Backend & WhatsApp Dispatch) -->
-              <div id="form-status-alert" class="hidden"></div>
-
-              <!-- Action Buttons: Send Enquiry or Instant WhatsApp -->
-              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
-                <button 
-                  type="submit" 
-                  class="btn-slope btn-slope-primary flex-1 px-6 py-3.5 rounded-xl text-white font-display text-sm font-bold flex items-center justify-center gap-2"
-                >
-                  <span class="material-symbols-outlined text-[20px]">send</span>
-                  <span>Send Project Enquiry</span>
-                </button>
-
-                <button 
-                  type="button" 
-                  id="form-direct-whatsapp-btn"
-                  class="btn-slope btn-slope-emerald flex-1 px-5 py-3.5 rounded-xl text-white font-display text-sm font-bold flex items-center justify-center gap-2"
-                >
-                  <span class="material-symbols-outlined text-[20px]">chat</span>
-                  <span>Send Direct via WhatsApp</span>
-                </button>
-              </div>
-
-              <p class="font-mono text-[11px] text-slate-400 pt-1">
-                * We maintain strict confidentiality of your project ideas, source code, and university submissions.
-              </p>
-
-            </form>
-
-          </div>
-
-          <!-- Right Column: Direct Lab Channels & Central Config Binding -->
-          <div class="lg:col-span-5 flex flex-col gap-6">
-            
-            <!-- Direct Lab Contact Card -->
-            <div class="p-8 rounded-3xl bg-[#0B1220] text-white shadow-xl flex flex-col gap-6 border border-cyan-500/20 tech-glow-navy">
-              <div>
-                <span class="font-mono text-xs text-cyan-400 uppercase font-semibold">// DIRECT_STUDENT_DESK</span>
-                <h3 class="font-display text-xl sm:text-2xl font-bold text-white mt-1">Get in Touch Directly</h3>
-                <p class="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed">
-                  Need immediate advice before submitting? Reach our lab engineers directly via WhatsApp or Email.
-                </p>
-              </div>
-
-              <div class="flex flex-col gap-3 font-mono text-xs">
-                
-                <!-- WhatsApp Channel -->
-                <a 
-                  href="#"
-                  data-config-href="whatsapp"
-                  data-whatsapp-msg="quickChat"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/40 transition-colors group"
-                >
-                  <div class="w-11 h-11 rounded-xl icon-slope icon-slope-emerald flex items-center justify-center shrink-0">
-                    <span class="material-symbols-outlined text-[22px]">chat</span>
-                  </div>
-                  <div>
-                    <div class="text-[10px] text-slate-400 uppercase">WHATSAPP DIRECT</div>
-                    <div class="text-white font-semibold group-hover:text-emerald-300 transition-colors" data-config-text="contact.whatsappDisplay">
-                      +91 96429 12613
-                    </div>
-                  </div>
-                </a>
-
-                <!-- Email Channel -->
-                <a 
-                  href="#"
-                  data-config-href="email"
-                  class="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500/40 transition-colors group"
-                >
-                  <div class="w-11 h-11 rounded-xl icon-slope icon-slope-blue flex items-center justify-center shrink-0">
-                    <span class="material-symbols-outlined text-[22px]">mail</span>
-                  </div>
-                  <div>
-                    <div class="text-[10px] text-slate-400 uppercase">STUDIO EMAIL</div>
-                    <div class="text-white font-semibold group-hover:text-cyan-300 transition-colors" data-config-text="contact.email">
-                      kj1201577@gmail.com
-                    </div>
-                  </div>
-                </a>
-
-                <!-- Location Hub -->
-                <div class="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-900 border border-slate-800">
-                  <div class="w-11 h-11 rounded-xl icon-slope icon-slope-dark flex items-center justify-center shrink-0">
-                    <span class="material-symbols-outlined text-[22px]">location_on</span>
-                  </div>
-                  <div>
-                    <div class="text-[10px] text-slate-400 uppercase">INNOVATION HUB</div>
-                    <div class="text-slate-200 text-[11px] font-sans" data-config-text="contact.location">
-                      Technology &amp; Innovation Park, Hyderabad / Bangalore, India
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Operating Hours -->
-                <div class="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-900 border border-slate-800">
-                  <div class="w-11 h-11 rounded-xl icon-slope icon-slope-dark flex items-center justify-center shrink-0">
-                    <span class="material-symbols-outlined text-[22px]">schedule</span>
-                  </div>
-                  <div>
-                    <div class="text-[10px] text-slate-400 uppercase">HELPDESK HOURS</div>
-                    <div class="text-slate-200 text-[11px] font-sans" data-config-text="contact.hours">
-                      9:00 AM – 9:00 PM IST (Mon – Sat)
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-              <!-- Social Links -->
-              <div class="pt-2 border-t border-slate-800 flex items-center justify-between">
-                <span class="font-mono text-[11px] text-slate-400 uppercase">SOCIAL CHANNELS:</span>
-                <div class="flex items-center gap-2">
-                  <a 
-                    href="#"
-                    data-config-href="contact.instagram"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-slope btn-slope-dark px-3 py-1.5 rounded-lg text-cyan-300 text-xs font-mono inline-flex items-center"
-                  >
-                    Instagram
-                  </a>
-                  <a 
-                    href="#"
-                    data-config-href="contact.linkedin"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-slope btn-slope-dark px-3 py-1.5 rounded-lg text-blue-300 text-xs font-mono inline-flex items-center"
-                  >
-                    LinkedIn
-                  </a>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Academic Guarantee Banner -->
-            <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-start gap-4">
-              <div class="w-11 h-11 rounded-xl icon-slope icon-slope-blue flex items-center justify-center shrink-0">
-                <span class="material-symbols-outlined text-[24px]">verified</span>
-              </div>
-              <div>
-                <h4 class="font-display text-sm font-bold text-[#0B1220]">100% Viva Defense Guarantee</h4>
-                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
-                  We don't consider a project done until you confidently defend it in front of your external examiner. Complete circuit &amp; code walkthrough included.
-                </p>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ========================================================================= -->
-  <!-- 11. FOOTER                                                                -->
-  <!-- ========================================================================= -->
-  <footer class="w-full bg-[#0B1220] text-white border-t border-slate-800">
-    <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-14">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
-        
-        <!-- Brand Info Column -->
-        <div class="lg:col-span-4 flex flex-col gap-4">
-          <div class="flex items-center gap-2.5">
-            <div class="w-10 h-10 rounded-xl icon-slope icon-slope-blue flex items-center justify-center text-white">
-              <span class="material-symbols-outlined text-[22px]">terminal</span>
-            </div>
-            <span class="font-display text-lg font-bold text-white" data-config-text="brand.name">Nexus Precision Studio</span>
-          </div>
-          <p class="text-xs sm:text-sm text-slate-400 max-w-sm leading-relaxed" data-config-text="brand.subTagline">
-            Engineering Projects Made Affordable for Every Student. Providing research, rapid prototyping, and production-grade project development across India.
-          </p>
-          <div class="flex items-center gap-2 pt-2">
-            <span class="w-2 h-2 rounded-full bg-cyan-400 pulse-indicator"></span>
-            <span class="font-mono text-xs text-cyan-300" data-config-text="brand.statusBadge">
-              OPEN FOR ACADEMIC BATCH 2024–2026
-            </span>
-          </div>
-        </div>
-
-        <!-- Quick Navigation -->
-        <div class="lg:col-span-2 flex flex-col gap-3">
-          <span class="font-mono text-xs text-cyan-400 uppercase font-semibold tracking-wider">[ NAVIGATION ]</span>
-          <ul class="flex flex-col gap-2 text-xs text-slate-400">
-            <li><a href="#hero" class="hover:text-white transition-colors">Home</a></li>
-            <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
-            <li><a href="#services" class="hover:text-white transition-colors">Our Services</a></li>
-            <li><a href="#domains" class="hover:text-white transition-colors">Domains</a></li>
-            <li><a href="#portfolio" class="hover:text-white transition-colors">Project Portfolio</a></li>
-            <li><a href="#why-choose-us" class="hover:text-white transition-colors">Why Choose Us</a></li>
-            <li><a href="#contact" class="hover:text-white transition-colors">Contact &amp; Enquiry</a></li>
-          </ul>
-        </div>
-
-        <!-- Domains & Capabilities Tags -->
-        <div class="lg:col-span-3 flex flex-col gap-3">
-          <span class="font-mono text-xs text-cyan-400 uppercase font-semibold tracking-wider">[ DOMAINS ]</span>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="px-2 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300 font-mono text-[11px]">ECE &amp; Embedded</span>
-            <span class="px-2 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300 font-mono text-[11px]">CSE / IT Web</span>
-            <span class="px-2 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300 font-mono text-[11px]">IoT Telemetry</span>
-            <span class="px-2 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300 font-mono text-[11px]">AI &amp; YOLO Vision</span>
-            <span class="px-2 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300 font-mono text-[11px]">Robotics &amp; AGV</span>
-            <span class="px-2 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300 font-mono text-[11px]">Mechanical &amp; EEE</span>
-            <span class="px-2 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300 font-mono text-[11px]">Custom R&amp;D</span>
-          </div>
-        </div>
-
-        <!-- Direct Comms Column -->
-        <div class="lg:col-span-3 flex flex-col gap-3">
-          <span class="font-mono text-xs text-cyan-400 uppercase font-semibold tracking-wider">[ DIRECT CHANNELS ]</span>
-          <p class="text-xs text-slate-400">
-            Initiate direct engineering consultation or submit your university problem statement.
-          </p>
-          <div class="flex flex-col gap-1.5 font-mono text-xs text-slate-300">
-            <div class="flex items-center gap-2">
-              <span class="material-symbols-outlined text-[16px] text-cyan-400">mail</span>
-              <span data-config-text="contact.email">kj1201577@gmail.com</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="material-symbols-outlined text-[16px] text-emerald-400">chat</span>
-              <span data-config-text="contact.whatsappDisplay">+91 96429 12613</span>
-            </div>
-          </div>
-          <a 
-            href="#"
-            data-config-href="whatsapp"
-            data-whatsapp-msg="general"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-slope btn-slope-emerald inline-flex items-center justify-center gap-2 mt-2 px-4 py-2.5 rounded-xl text-white font-display text-xs font-bold shadow-sm"
-          >
-            <span class="material-symbols-outlined text-[16px]">chat</span>
-            <span>WhatsApp Channel</span>
-          </a>
-        </div>
-
-      </div>
-
-      <!-- Footer Sub-bar -->
-      <div class="mt-12 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-mono">
-        <p>© <span data-config-text="brand.copyrightYear">2025</span> <span data-config-text="brand.name">Nexus Precision Studio</span>. All rights reserved.</p>
-        <div class="flex items-center gap-3">
-          <span class="text-cyan-400">SYS_STATUS: OPERATIONAL</span>
-          <span>•</span>
-          <span>SECURE STUDENT PORTAL</span>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ========================================================================= -->
-  <!-- FLOATING WHATSAPP BUTTON                                                  -->
-  <!-- ========================================================================= -->
-  <aside class="fixed bottom-6 right-6 z-40">
-    <a 
-      href="#"
-      data-config-href="whatsapp"
-      data-whatsapp-msg="quickChat"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="floating-slope-wa group flex items-center gap-2.5 p-3.5 sm:px-4 sm:py-3.5 rounded-full"
-      title="Discuss with an Engineer on WhatsApp (+91 96429 12613)"
-    >
-      <span class="material-symbols-outlined text-[24px] text-white">chat</span>
-      <span class="hidden sm:inline font-display text-xs font-bold tracking-wide text-white">
-        Discuss Project
-      </span>
-    </a>
-  </aside>
-
-  <!-- ========================================================================= -->
-  <!-- PROJECT DETAIL MODAL OVERLAY                                              -->
-  <!-- ========================================================================= -->
-  <div 
-    id="project-modal" 
-    class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B1220]/80 backdrop-blur-md hidden"
-    onclick="handleModalBackdropClick(event)"
-  >
-    <div 
-      class="modal-container relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl p-6 sm:p-8 flex flex-col gap-6"
-      onclick="event.stopPropagation()"
-    >
-      <!-- Modal Header -->
-      <div class="flex items-start justify-between border-b border-slate-200 pb-4">
-        <div>
-          <div id="modal-category-badge" class="font-mono text-xs text-blue-600 uppercase font-semibold">
-            IOT // PROTOTYPE
-          </div>
-          <h3 id="modal-title" class="font-display text-xl sm:text-2xl font-bold text-[#0B1220] mt-1">
-            Project Title
-          </h3>
-        </div>
-        <button 
-          type="button"
-          onclick="closeProjectModal()"
-          class="w-9 h-9 rounded-xl btn-slope btn-slope-secondary flex items-center justify-center text-slate-700"
-          aria-label="Close dialog"
-        >
-          <span class="material-symbols-outlined text-[20px]">close</span>
-        </button>
-      </div>
-
-      <!-- Modal Body Content -->
-      <div class="flex flex-col gap-5">
-        <div>
-          <h4 class="font-mono text-xs text-slate-500 uppercase font-semibold">PROJECT OVERVIEW</h4>
-          <p id="modal-overview" class="text-sm text-slate-700 mt-1.5 leading-relaxed">
-            Project overview goes here.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="font-mono text-xs text-slate-500 uppercase font-semibold">PROBLEM STATEMENT SOLVED</h4>
-          <p id="modal-problem" class="text-sm text-slate-700 mt-1.5 leading-relaxed">
-            Problem statement goes here.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="font-mono text-xs text-slate-500 uppercase font-semibold">TECHNOLOGIES USED</h4>
-          <div id="modal-tech-list" class="flex flex-wrap gap-2 mt-2">
-            <!-- Badges dynamically inserted -->
-          </div>
-        </div>
-
-        <div>
-          <h4 class="font-mono text-xs text-slate-500 uppercase font-semibold">KEY FEATURES &amp; OUTCOMES</h4>
-          <ul id="modal-features-list" class="flex flex-col gap-2 mt-2">
-            <!-- Features dynamically inserted -->
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="font-mono text-xs text-slate-500 uppercase font-semibold">DELIVERABLES INCLUDED IN PACKAGE</h4>
-          <ul id="modal-deliverables-list" class="flex flex-col gap-2 mt-2">
-            <!-- Deliverables dynamically inserted -->
-          </ul>
-        </div>
-      </div>
-
-      <!-- Modal Actions Footer -->
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-200">
-        <span class="font-mono text-xs text-slate-500">
-          READY FOR CUSTOMIZATION &amp; VIVA DEMO
-        </span>
-        <div class="flex items-center gap-3 w-full sm:w-auto">
-          <button 
-            type="button"
-            onclick="closeProjectModal()"
-            class="btn-slope btn-slope-secondary px-4 py-2.5 rounded-xl font-display text-xs sm:text-sm font-semibold text-slate-700"
-          >
-            Close
-          </button>
-          <a 
-            id="modal-whatsapp-cta"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-slope btn-slope-emerald flex-1 sm:flex-initial px-6 py-2.5 rounded-xl text-white font-display text-xs sm:text-sm font-bold flex items-center justify-center gap-2"
-          >
-            <span class="material-symbols-outlined text-[18px]">chat</span>
-            <span>Enquire on WhatsApp</span>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Central Configuration & Logic Scripts -->
-  <script src="assets/js/config.js"></script>
-  <script src="assets/js/projects-data.js"></script>
-  <script src="assets/js/main.js"></script>
-
-  <!-- Three.js Flow Wave Background Interactive Engine -->
   <script type="module">
     import * as THREE from 'three';
     import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
@@ -1926,34 +63,31 @@
     import { GammaCorrectionShader } from 'three/addons/shaders/GammaCorrectionShader.js';
     import { CopyShader } from 'three/addons/shaders/CopyShader.js';
 
-    // Fixed parameters (baked in)
-    const bgColor         = '#02160c';   // FinalPass background tint
-    const flameColor      = '#0aff7f';   // corner-flame A
-    const flameColor2     = '#aef0c0';   // corner-flame B
-    const flameAmt        = 0.2;         // corner-flame intensity
-    const atmoColor       = '#7affbf';   // ambient motes color
-    const atmoCount       = 300;         // mote count
-    const atmoSize        = 24;          // mote base size
-    const atmoSpeed       = 1.0;         // mote warp speed
-    const colorLow        = '#02160c';   // points low color
-    const colorHigh       = '#34e89a';   // points high color
-    const opacity         = 0.26;        // point opacity
-    const pointSize       = 5.5;         // point base size
-    const brightness      = 0.45;        // point color multiplier
-    const waveHeight      = 3;           // base swell amplitude
-    const flow            = 1;           // noise scroll speed
-    const tilt            = 0;           // sheet X rotation (negated)
-    const scale           = 0.275;       // shrinks the sheet to frame
-    const scrollRise      = 1.0;         // swell amplitude growth on scroll
-    const camStartY       = 7,  camStartZ = 16;   // scroll 0 camera
-    const camEndY         = 0.8, camEndZ  = -2;   // scroll 1 camera
-    const lookStartZ      = 2,  lookEndZ  = -16;  // look-target pan
-    const parallax        = 1.2;
-    const pointerRadius   = 7.0;
-    const pointerStrength = 0.9;
+    // Fixed parameters (bake these in)
+    const CONFIG = {
+      bgColor: '#0a0a24',      // dark complementary background tint
+      flameColor: '#aee9ff',   // corner-flame color A
+      flameColor2: '#c79bff',  // corner-flame color B
+      flameAmt: 0.2,           // corner-flame intensity
+      colorA: '#aef6cf',       // star tint A (mint)
+      colorB: '#5fe6a0',       // star tint B (jade)
+      colorC: '#eafff2',       // star tint C (bone)
+      opacity: 2,
+      pointSize: 50,
+      brightness: 1.85,
+      drift: 2.35,             // steady tunnel speed
+      twinkle: 1,
+      spin: 0.03,              // barrel rotation rate
+      repelRadius: 5,
+      repelStrength: 0.35,
+      scrollPush: 8,           // forward camera dive on scroll
+      scrollDrift: 6,          // extra drift surge on scroll
+      scrollSpin: 0.1,         // extra spin on scroll
+      parallax: 0.6,           // cursor camera offset
+    };
 
     // Helpers
-    const Lerp = (a, b, t) => a + (b - a) * t;
+    const lerp = (a, b, t) => a + (b - a) * t;
     const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
     function hexToVec3(hex) {
       const n = parseInt(hex.slice(1), 16);
@@ -1962,7 +96,7 @@
 
     // Canvas & Renderer
     const canvas = document.getElementById('scene');
-    const renderer = new THREE.WebGL1Renderer({ canvas, antialias: true, alpha: true });
+    const renderer = new THREE.WebGL1Renderer({ canvas, antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight, false);
     renderer.shadowMap.enabled = true;
@@ -1973,9 +107,10 @@
     scene.background = new THREE.Color(0x000000);
     scene.fog = new THREE.Fog(0x000000, 0, 15);
 
-    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 400);
-    camera.position.set(0, camStartY, camStartZ);
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 80);
+    camera.position.set(0, 0, 5);
 
+    // Layers
     const LAYERS = { NONE: 0, TORUS_SCENE: 1, BLOOM_SCENE: 2, ENTIRE_SCENE: 3 };
     camera.layers.enable(LAYERS.TORUS_SCENE);
     camera.layers.enable(LAYERS.BLOOM_SCENE);
@@ -1983,12 +118,12 @@
     scene.add(camera);
 
     // Shared RenderPass
-    const renderPass = new RenderPass(scene, camera);
+    const renderScene = new RenderPass(scene, camera);
 
     // torusComposer (renderToScreen = false)
     const torusComposer = new EffectComposer(renderer);
     torusComposer.renderToScreen = false;
-    torusComposer.addPass(renderPass);
+    torusComposer.addPass(renderScene);
     torusComposer.addPass(new ShaderPass(GammaCorrectionShader));
     torusComposer.addPass(new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.22, 0.2, 0));
     torusComposer.addPass(new ShaderPass(CopyShader));
@@ -1996,22 +131,22 @@
     // bloomComposer (renderToScreen = false)
     const bloomComposer = new EffectComposer(renderer);
     bloomComposer.renderToScreen = false;
-    bloomComposer.addPass(renderPass);
+    bloomComposer.addPass(renderScene);
     bloomComposer.addPass(new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.4, 0.55, 0));
     bloomComposer.addPass(new ShaderPass(GammaCorrectionShader));
 
     // FinalPass Shader & Composer
     const FinalShader = {
       uniforms: {
-        iTime: { value: 0 },
-        tDiffuse: { value: null },
+        iTime:        { value: 0 },
+        tDiffuse:     { value: null },
         torusTexture: { value: null },
         bloomTexture: { value: null },
-        haloTexture: { value: null },
-        uBg: { value: hexToVec3(bgColor) },
-        uFlameA: { value: hexToVec3(flameColor) },
-        uFlameB: { value: hexToVec3(flameColor2) },
-        uFlameAmt: { value: flameAmt }
+        haloTexture:  { value: null },
+        uBg:          { value: hexToVec3(CONFIG.bgColor) },
+        uFlameA:      { value: hexToVec3(CONFIG.flameColor) },
+        uFlameB:      { value: hexToVec3(CONFIG.flameColor2) },
+        uFlameAmt:    { value: CONFIG.flameAmt }
       },
       vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position, 1.0); }`,
       fragmentShader: `
@@ -2041,181 +176,110 @@ void main(){
     finalPass.uniforms.torusTexture.value = torusComposer.renderTarget1.texture;
 
     const finalComposer = new EffectComposer(renderer);
-    finalComposer.addPass(renderPass);
+    finalComposer.addPass(renderScene);
     finalComposer.addPass(finalPass);
 
-    // Shared GLSL: Simplex Noise (SNOISE)
-    const SNOISE = `
-vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
-vec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}
-float snoise(vec3 v){
-  const vec2 C = vec2(1.0/6.0, 1.0/3.0); const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
-  vec3 i = floor(v + dot(v, C.yyy)); vec3 x0 = v - i + dot(i, C.xxx);
-  vec3 g = step(x0.yzx, x0.xyz); vec3 l = 1.0 - g;
-  vec3 i1 = min(g.xyz, l.zxy); vec3 i2 = max(g.xyz, l.zxy);
-  vec3 x1 = x0 - i1 + 1.0 * C.xxx; vec3 x2 = x0 - i2 + 2.0 * C.xxx; vec3 x3 = x0 - 1.0 + 3.0 * C.xxx;
-  i = mod(i, 289.0);
-  vec4 p = permute(permute(permute(i.z + vec4(0.0, i1.z, i2.z, 1.0)) + i.y + vec4(0.0, i1.y, i2.y, 1.0)) + i.x + vec4(0.0, i1.x, i2.x, 1.0));
-  float n_ = 1.0/7.0; vec3 ns = n_ * D.wyz - D.xzx;
-  vec4 j = p - 49.0 * floor(p * ns.z *ns.z);
-  vec4 x_ = floor(j * ns.z); vec4 y_ = floor(j - 7.0 * x_);
-  vec4 x = x_ *ns.x + ns.yyyy; vec4 y = y_ *ns.x + ns.yyyy; vec4 h = 1.0 - abs(x) - abs(y);
-  vec4 b0 = vec4(x.xy, y.xy); vec4 b1 = vec4(x.zw, y.zw);
-  vec4 s0 = floor(b0)*2.0 + 1.0; vec4 s1 = floor(b1)*2.0 + 1.0; vec4 sh = -step(h, vec4(0.0));
-  vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy; vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww;
-  vec3 p0 = vec3(a0.xy,h.x); vec3 p1 = vec3(a0.zw,h.y); vec3 p2 = vec3(a1.xy,h.z); vec3 p3 = vec3(a1.zw,h.w);
-  vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
-  p0 *= norm.x; p1 *= norm.y; p2 *= norm.z; p3 *= norm.w;
-  vec4 m = max(0.5 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0); m = m * m;
-  return 42.0 * dot(m*m, vec4(dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3)));
-}
-    `;
+    // Geometry: Starfield Points Cloud
+    const count = 4200;
+    const depth = 30;
 
-    // Geometry & Material: Flow Wave Points
-    const waveGeometry = new THREE.SphereGeometry(4.2, 200, 600);
+    const positions = new Float32Array(count * 3);
+    const palette = new Float32Array(count);
+    const bright = new Float32Array(count);
+    const scales = new Float32Array(count);
+    const phases = new Float32Array(count);
 
-    const waveMaterial = new THREE.ShaderMaterial({
+    for (let i = 0; i < count; i++) {
+      const i3 = i * 3;
+      positions[i3]     = (Math.random() - 0.5) * 24;  // x: box width 24
+      positions[i3 + 1] = (Math.random() - 0.5) * 16;  // y: box height 16
+      positions[i3 + 2] = (Math.random() - 0.5) * 30;  // z: box depth 30 (== depth, for seamless wrap)
+      palette[i] = Math.floor(Math.random() * 3);      // 0 / 1 / 2 → tint A / B / C
+      bright[i]  = 0.7 + Math.random() * 0.6;
+      scales[i]  = 0.5 + Math.pow(Math.random(), 1.4) * 2.5;
+      phases[i]  = Math.random();
+    }
+
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('aScale', new THREE.BufferAttribute(scales, 1));
+    geometry.setAttribute('aPhase', new THREE.BufferAttribute(phases, 1));
+    geometry.setAttribute('aPalette', new THREE.BufferAttribute(palette, 1));
+    geometry.setAttribute('aBright', new THREE.BufferAttribute(bright, 1));
+
+    // Material & Shaders
+    const material = new THREE.ShaderMaterial({
       transparent: true,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
       uniforms: {
-        uTime: { value: 0 },
-        uStream: { value: 0 },
-        uAppear: { value: 0 },
-        uColLow: { value: hexToVec3(colorLow) },
-        uColHigh: { value: hexToVec3(colorHigh) },
-        uOpacity: { value: opacity },
-        uSize: { value: pointSize },
-        uBrightness: { value: brightness },
-        uWaveHeight: { value: waveHeight },
-        uFlow: { value: flow },
-        uScale: { value: scale },
-        uCursor: { value: new THREE.Vector3() },
-        uRepelRadius: { value: pointerRadius },
-        uRepelStrength: { value: pointerStrength },
-        uActivity: { value: 0 }
+        uTime:          { value: 0 },
+        uSize:          { value: CONFIG.pointSize },
+        uOpacity:       { value: 0 },
+        uDrift:         { value: 0 },
+        uDepth:         { value: depth },
+        uTwinkle:       { value: CONFIG.twinkle },
+        uCursor:        { value: new THREE.Vector3() },
+        uRepelRadius:   { value: CONFIG.repelRadius },
+        uRepelStrength: { value: CONFIG.repelStrength },
+        uActivity:      { value: 0 },
+        uColorA:        { value: hexToVec3(CONFIG.colorA) },
+        uColorB:        { value: hexToVec3(CONFIG.colorB) },
+        uColorC:        { value: hexToVec3(CONFIG.colorC) },
+        uBrightness:    { value: CONFIG.brightness }
       },
       vertexShader: `
-uniform float uTime; uniform float uStream; uniform float uSize; uniform float uWaveHeight; uniform float uFlow; uniform float uScale;
-uniform vec3 uColLow; uniform vec3 uColHigh;
+uniform float uTime; uniform float uSize; uniform float uDrift; uniform float uDepth; uniform float uTwinkle;
 uniform vec3 uCursor; uniform float uRepelRadius; uniform float uRepelStrength; uniform float uActivity;
-varying float vFade; varying vec3 vColor;
-${SNOISE}
+uniform vec3 uColorA; uniform vec3 uColorB; uniform vec3 uColorC;
+attribute float aScale; attribute float aPhase; attribute float aPalette; attribute float aBright;
+varying vec3 vColor; varying float vTwinkle;
 void main() {
-  vec3 wp = vec3(position.x * 13.0, 0.0, position.z * 25.0);
-  wp.x += position.y * 6.0;
-  // uStream slides the sampled hills toward the camera (forward flight).
-  float zc = wp.z + uStream;
-  float wn = snoise(vec3(wp.x * 0.08, zc * 0.08, uTime * 0.15 * uFlow)) * 2.0;
-  wn += snoise(vec3(wp.x * 0.16, zc * 0.16, uTime * 0.3 * uFlow)) * 0.8;
-  wp.y += wn * uWaveHeight;
+  vec3 pos = position;
+  // Endless drift toward +Z with mod-wrap.
+  pos.z = mod(pos.z + uDrift + (uDepth * 0.5), uDepth) - (uDepth * 0.5);
 
-  vec3 finalPos = wp * uScale;
-  vec4 modelPosition = modelMatrix * vec4(finalPos, 1.0);
-  vec3 toP = modelPosition.xyz - uCursor;
-  float cd = length(toP);
-  float fall = smoothstep(uRepelRadius, 0.0, cd);
-  modelPosition.xyz += normalize(toP + vec3(0.0001)) * fall * uRepelStrength * uActivity;
-  vec4 mvPosition = viewMatrix * modelPosition;
+  float tw = sin(uTime * 1.6 + aPhase * 6.2831);
+  vTwinkle = (1.0 - uTwinkle) + uTwinkle * (0.55 + 0.45 * tw);
 
-  float colMix = smoothstep(-3.0, 3.0, position.y + position.x * 0.5);
-  vColor = mix(uColLow, uColHigh, clamp(colMix, 0.0, 1.0));
-  vFade = 1.0;
+  vec4 modelPosition = modelMatrix * vec4(pos, 1.0);
 
-  gl_PointSize = uSize * (10.0 / -mvPosition.z);
-  gl_PointSize = max(gl_PointSize, 1.5);
-  gl_Position = projectionMatrix * mvPosition;
+  vec3 toParticle = modelPosition.xyz - uCursor;
+  float dist = length(toParticle);
+  float falloff = smoothstep(uRepelRadius, 0.0, dist);
+  modelPosition.xyz += normalize(toParticle + vec3(0.0001)) * falloff * uRepelStrength * uActivity;
+
+  vec4 viewPosition = viewMatrix * modelPosition;
+  gl_Position = projectionMatrix * viewPosition;
+  gl_PointSize = uSize * aScale;
+  gl_PointSize *= (1.0 / -viewPosition.z);
+
+  vec3 base = aPalette < 0.5 ? uColorA : (aPalette < 1.5 ? uColorB : uColorC);
+  vColor = base * aBright;
 }
       `,
       fragmentShader: `
-uniform float uOpacity; uniform float uBrightness; uniform float uAppear;
-varying float vFade; varying vec3 vColor;
+uniform float uOpacity; uniform float uBrightness;
+varying vec3 vColor; varying float vTwinkle;
 void main() {
-  vec2 xy = gl_PointCoord - 0.5;
-  float ll = length(xy);
-  if (ll > 0.5) discard;
-  float a = smoothstep(0.5, 0.1, ll);
-  gl_FragColor = vec4(vColor * uBrightness, vFade * a * uOpacity * uAppear);
+  vec2 uv = gl_PointCoord - 0.5;
+  float d = length(uv);
+  if (d > 0.5) discard;
+  float strength = pow(1.0 - d * 2.0, 4.0);
+  vec3 color = mix(vec3(0.0), vColor, strength);
+  gl_FragColor = vec4(color * uBrightness, strength * uOpacity * vTwinkle);
 }
       `
     });
 
-    const wavePoints = new THREE.Points(waveGeometry, waveMaterial);
-    wavePoints.frustumCulled = false;
-    wavePoints.layers.enable(LAYERS.ENTIRE_SCENE);
+    const points = new THREE.Points(geometry, material);
+    points.frustumCulled = false;
+    points.layers.enable(LAYERS.ENTIRE_SCENE);
 
     const group = new THREE.Group();
     group.layers.enable(LAYERS.ENTIRE_SCENE);
-    group.add(wavePoints);
+    group.add(points);
     scene.add(group);
-
-    // Ambient motes (camera-attached drifting particles)
-    const atmo = (() => {
-      const N = Math.round(atmoCount);
-      const positions = new Float32Array(N * 3);
-      const sizes = new Float32Array(N);
-      const seeds = new Float32Array(N);
-
-      for (let i = 0; i < N; i++) {
-        positions[i * 3]     = 2 * Math.random() - 1;
-        positions[i * 3 + 1] = 2 * Math.random() - 1;
-        positions[i * 3 + 2] = 2 * Math.random() - 1;
-        sizes[i] = atmoSize * (0.4 + Math.random());
-        seeds[i] = Math.random();
-      }
-
-      const geom = new THREE.BufferGeometry();
-      geom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      geom.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
-      geom.setAttribute('seed', new THREE.BufferAttribute(seeds, 1));
-
-      const mat = new THREE.ShaderMaterial({
-        transparent: true,
-        blending: THREE.AdditiveBlending,
-        depthWrite: false,
-        depthTest: false,
-        uniforms: {
-          uTime: { value: 0 },
-          uColor: { value: hexToVec3(atmoColor) },
-          uRes: { value: new THREE.Vector2(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio) }
-        },
-        vertexShader: `
-attribute float size; attribute float seed; uniform float uTime; uniform vec2 uRes;
-varying float vA;
-vec3 warp(vec3 p, float t){ float c=0.9,a=1.9,b=0.02,s=0.05; p*=2.;
-  p.x+=c*sin(s*t+a*p.y)+t*b; p.y+=c*cos(s*t+a*p.x); p.y+=c*sin(s*t+a*p.z)+t*b;
-  p.z+=c*cos(s*t+a*p.y); p.z+=c*sin(s*t+a*p.x)+t*b; p.x+=c*cos(s*t+a*p.z);
-  return cos(p+vec3(1,2,4)); }
-void main(){
-  vec3 v = position*4.0 + warp(position, uTime)*1.2;
-  vec4 mv = modelViewMatrix * vec4(v, 1.0);
-  float r = length(v); float farF = 1.0 - smoothstep(5.0, 6.5, r); float nearF = smoothstep(0.0, 0.5, -mv.z);
-  vA = farF * nearF;
-  gl_PointSize = size * uRes.y / 900.0 / -mv.z; gl_PointSize = max(gl_PointSize, 1.0);
-  gl_Position = projectionMatrix * mv;
-}
-        `,
-        fragmentShader: `
-uniform vec3 uColor; varying float vA;
-void main(){ vec2 p = gl_PointCoord - 0.5; float l = length(p); if (l > 0.5) discard;
-  float tex = smoothstep(0.5, 0.0, l); gl_FragColor = vec4(uColor * tex, tex * vA * 0.6); }
-        `
-      });
-
-      const pts = new THREE.Points(geom, mat);
-      pts.frustumCulled = false;
-      pts.layers.enable(LAYERS.ENTIRE_SCENE);
-      scene.add(pts);
-
-      pts.onBeforeRender = () => {
-        const t = performance.now() / 1000;
-        mat.uniforms.uTime.value = t * atmoSpeed * 8.0;
-        pts.position.copy(camera.position);
-        finalPass.uniforms.iTime.value = t;
-      };
-
-      return { pts, mat };
-    })();
 
     // Scroll input (double-damped)
     let scrollTarget = 0;
@@ -2229,7 +293,7 @@ void main(){ vec2 p = gl_PointCoord - 0.5; float l = length(p); if (l > 0.5) dis
 
     // Pointer input
     const mouseTarget = { x: 0, y: 0 };
-    const mouse = { x: 0, y: 0 };
+    const mouseSmooth = { x: 0, y: 0 };
     const POINTER = {
       world: new THREE.Vector3(),
       activity: 0,
@@ -2263,67 +327,75 @@ void main(){ vec2 p = gl_PointCoord - 0.5; float l = length(p); if (l > 0.5) dis
     }, { passive: true });
 
     const _ndc = new THREE.Vector3(), _dir = new THREE.Vector3(), _tgt = new THREE.Vector3();
-    function updatePointerWorld() {
+    function updatePointer() {
       _tgt.set(0, 0, 0);
       if (POINTER.active) {
-        _ndc.set(mouse.x, mouse.y, 0.5).unproject(camera);
+        _ndc.set(mouseSmooth.x, mouseSmooth.y, 0.5).unproject(camera);
         _dir.copy(_ndc).sub(camera.position).normalize();
         const dn = _dir.z;
         if (Math.abs(dn) > 1e-4) {
           const tt = -camera.position.z / dn;
-          if (tt > 0 && Number.isFinite(tt)) _tgt.copy(camera.position).addScaledVector(_dir, tt);
+          if (tt > 0 && Number.isFinite(tt)) {
+            _tgt.copy(camera.position).addScaledVector(_dir, tt);
+          }
         }
       }
       POINTER.world.lerp(_tgt, 0.12);
       const idle = (performance.now() - POINTER.lastMove) / 1000;
-      POINTER.activity += (((POINTER.active && idle < 3) ? 1 : 0) - POINTER.activity) * 0.06;
+      const want = (POINTER.active && idle < 3) ? 1 : 0;
+      POINTER.activity += (want - POINTER.activity) * 0.06;
+
+      material.uniforms.uCursor.value.copy(POINTER.world);
+      material.uniforms.uActivity.value = POINTER.activity;
     }
 
-    // Per-frame scene update
-    const sceneObj = {
-      stream: 0,
-      t0: performance.now() / 1000,
-      appearStart: performance.now(),
-      render(scroll, m) {
-        const t = performance.now() / 1000;
-        const dt = Math.min(0.05, t - this.t0);
-        this.t0 = t;
-        waveMaterial.uniforms.uTime.value = t;
-
-        // Stream the hills toward us at a constant rate; grow the swell with scroll.
-        this.stream += dt * (flow * 2.0) * 4.0;
-        waveMaterial.uniforms.uStream.value = this.stream;
-        waveMaterial.uniforms.uWaveHeight.value = waveHeight * (1 + scroll * scrollRise);
-
-        // Camera fly-path: smoothstep over the first 35% of scroll.
-        const ea = Math.min(scroll / 0.35, 1.0);
-        const e = ea * ea * (3 - 2 * ea);
-        const camY = Lerp(camStartY, camEndY, e);
-        const camZ = Lerp(camStartZ, camEndZ, e);
-        camera.position.set(m.x * parallax, camY + m.y * parallax * 0.3, camZ);
-        camera.lookAt(m.x * parallax * 0.5, Lerp(0.0, 0.6, e), Lerp(lookStartZ, lookEndZ, e));
-        group.rotation.x = -tilt;
-        group.rotation.y = 0;
-        updatePointerWorld();
-
-        waveMaterial.uniforms.uCursor.value.copy(POINTER.world);
-        waveMaterial.uniforms.uActivity.value = POINTER.activity;
-        const elapsed = (performance.now() - this.appearStart) / 1000;
-        waveMaterial.uniforms.uAppear.value = Math.max(0, Math.min(1, (elapsed - 0.2) / 1.4));
-      }
-    };
+    // Per-frame scene update parameters
+    let t0 = performance.now() / 1000;
+    const appearStart = performance.now();
+    let uDrift = 0;
 
     // Render loop
     function animate() {
       requestAnimationFrame(animate);
 
-      scrollSmooth  = Lerp(scrollSmooth, scrollTarget, 0.10);
-      scrollCurrent = Lerp(scrollCurrent, scrollSmooth, 0.06);
-      mouse.x = Lerp(mouse.x, mouseTarget.x, 0.06);
-      mouse.y = Lerp(mouse.y, mouseTarget.y, 0.06);
+      // Advance scroll and mouse smooth
+      scrollSmooth = lerp(scrollSmooth, scrollTarget, 0.10);
+      scrollCurrent = lerp(scrollCurrent, scrollSmooth, 0.06);
+      mouseSmooth.x = lerp(mouseSmooth.x, mouseTarget.x, 0.06);
+      mouseSmooth.y = lerp(mouseSmooth.y, mouseTarget.y, 0.06);
 
-      sceneObj.render(scrollCurrent, mouse);
+      updatePointer();
 
+      const t = performance.now() / 1000;
+      const dt = Math.min(0.05, t - t0);
+      t0 = t;
+
+      material.uniforms.uTime.value = t;
+
+      // Drift surge on scroll
+      uDrift += dt * (CONFIG.drift + scrollCurrent * CONFIG.scrollDrift);
+      material.uniforms.uDrift.value = uDrift;
+
+      // Forward camera dive on scroll & parallax
+      camera.position.set(
+        mouseSmooth.x * CONFIG.parallax,
+        mouseSmooth.y * CONFIG.parallax,
+        5 - scrollCurrent * CONFIG.scrollPush
+      );
+      camera.lookAt(mouseSmooth.x * CONFIG.parallax, mouseSmooth.y * CONFIG.parallax, -10);
+
+      // Appear fade-in
+      const elapsed = performance.now() - appearStart;
+      const fade = clamp((elapsed - 300) / 1400, 0, 1);
+      material.uniforms.uOpacity.value = fade * CONFIG.opacity;
+
+      // Barrel spin on Z
+      group.rotation.z += dt * (CONFIG.spin + scrollCurrent * CONFIG.scrollSpin);
+
+      // Corner-flame time
+      finalPass.uniforms.iTime.value = t;
+
+      // Render composers
       camera.layers.set(LAYERS.TORUS_SCENE);  torusComposer.render();
       camera.layers.set(LAYERS.BLOOM_SCENE);  bloomComposer.render();
       camera.layers.set(LAYERS.ENTIRE_SCENE); finalComposer.render();
@@ -2351,8 +423,6 @@ void main(){ vec2 p = gl_PointCoord - 0.5; float l = length(p); if (l > 0.5) dis
       finalComposer.setPixelRatio(dpr);
       finalComposer.setSize(w, h);
 
-      atmo.mat.uniforms.uRes.value.set(w * dpr, h * dpr);
-
       const max = document.documentElement.scrollHeight - window.innerHeight;
       scrollTarget = max > 0 ? clamp(window.scrollY / max, 0, 1) : 0;
     }
@@ -2362,4 +432,3 @@ void main(){ vec2 p = gl_PointCoord - 0.5; float l = length(p); if (l > 0.5) dis
   </script>
 </body>
 </html>
-
