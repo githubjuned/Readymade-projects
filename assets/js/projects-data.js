@@ -70,6 +70,64 @@ const PROJECTS_DATA = [
     }
   },
   {
+    id: "project-niat-iot-n8n",
+    title: "Smart IoT & N8N Workflow Automation Telemetry System",
+    category: "iot",
+    categoryLabel: "IOT // N8N AUTOMATION",
+    badge: "NIAT INNOVATION",
+    summary: "Engineered smart IoT architecture built at NIAT University using ESP32, sensor arrays, and N8N workflow automations to enable real-time device-to-device communication and intelligent cloud telemetry.",
+    image: "assets/images/projects/niat_iot_n8n.jpg",
+    remoteImage: "https://media.licdn.com/dms/image/v2/D5622AQG76AzFWyLFyw/feedshare-image-high-res/B56Zng9Q9gHQAo-/0/1760415815026?e=2147483647&v=beta&t=82IFb5XzjqHrW3mOckzZHQA0CY20jYIA9oLCYuNfFvI",
+    externalUrl: "https://lnkd.in/p/gJ7qvgad",
+    fallbackIcon: "hub",
+    techStack: ["ESP32", "N8N Workflows", "IoT Sensors", "Cloud Webhooks", "Automation API", "Wi-Fi Telemetry"],
+    details: {
+      overview: "An advanced IoT automation project developed during the hands-on workshop at NIAT University. Combines ESP32 microcontrollers and sensor hardware with the orchestration power of N8N workflows, transforming raw telemetry into automated actionable events across cloud services and mobile endpoints.",
+      problem: "Traditional IoT deployments lack flexible middleware automation, requiring bulky backend servers and complex code to route sensor alerts and device state changes across different third-party platforms.",
+      features: [
+        "Seamless integration between ESP32 hardware telemetry and N8N visual automation nodes.",
+        "Automated multi-channel alert dispatch (Telegram/WhatsApp/Email) triggered by threshold sensor readings.",
+        "Low-power Wi-Fi data packets with local buffering to prevent telemetry drops during network outages.",
+        "Modular workflow triggers adaptable to smart campus, agriculture, and industrial monitoring environments."
+      ],
+      deliverables: [
+        "Tested ESP32 C++ firmware with Wi-Fi & webhook event handlers",
+        "Exportable N8N automation workflow JSON configuration files",
+        "Hardware breadboard wiring diagram & component spec sheet",
+        "Comprehensive technical documentation and academic viva explanation"
+      ]
+    }
+  },
+  {
+    id: "project-niat-bootcamp",
+    title: "Full-Stack Embedded Engineering & Architecture Foundation",
+    category: "hardware",
+    categoryLabel: "HARDWARE // SYSTEMS DEV",
+    badge: "NIAT BOOTCAMP 13",
+    summary: "Engineered at NxtWave Institute of Advanced Technologies (NIAT) Bootcamp 13, covering rigorous systems engineering, microcontroller interfacing, hardware-software integration, and scalable full-stack development.",
+    image: "assets/images/projects/niat_bootcamp.jpg",
+    remoteImage: "https://media.licdn.com/dms/image/v2/D5622AQEz0-TMjYGGfw/feedshare-image-high-res/B56Zf0E9.IHoA0-/0/1752146637130?e=2147483647&v=beta&t=yAzsmUGhSnZCqM0kDSQZeT2khod_CK6DNDjFtDAIvTs",
+    externalUrl: "https://lnkd.in/p/gkEF8XBC",
+    fallbackIcon: "developer_board",
+    techStack: ["Embedded Systems", "Hardware Architecture", "Full-Stack Dev", "Microcontrollers", "Rapid Prototyping"],
+    details: {
+      overview: "Developed through the rigorous engineering immersion of NIAT Bootcamp 13 at NxtWave Institute of Advanced Technologies. Focuses on production-grade systems architecture, robust microcontroller firmware, circuit design principles, and end-to-end integration.",
+      problem: "Engineering students often face a gap between pure academic textbook theory and real-world industrial software-hardware development standards.",
+      features: [
+        "Hands-on architectural implementation bridging hardware circuit traces with software logic.",
+        "Structured design patterns for scalable, reliable microcontroller and web firmware.",
+        "Collaborative engineering workflows, version control, and benchtop debugging protocols.",
+        "Comprehensive problem-solving methodology evaluated by technical mentors."
+      ],
+      deliverables: [
+        "Complete hardware testbench prototypes and working circuit schematics",
+        "Modular, well-commented source code repositories",
+        "Comprehensive engineering portfolio documentation",
+        "Industry-aligned viva questions and technical architecture review guide"
+      ]
+    }
+  },
+  {
     id: "project-irrigation",
     title: "Solar-Powered IoT Precision Irrigation & Soil Telemetry",
     category: "iot",
