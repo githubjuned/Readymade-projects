@@ -55,46 +55,109 @@ function getNestedValue(obj, path) {
  */
 function initMobileNavigation() {
   const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const toggleIcon = document.getElementById('mobile-menu-icon');
   const closeBtn = document.getElementById('mobile-menu-close');
   const drawer = document.getElementById('mobile-menu-drawer');
   const backdrop = document.getElementById('mobile-menu-backdrop');
   const container = document.getElementById('mobile-menu-container');
   const navLinks = document.querySelectorAll('.mobile-nav-link');
 
-  if (!toggleBtn || !container) return;
+  if (!toggleBtn || !container || !drawer) return;
+
+  let isOpen = false;
 
   function openMobileMenu() {
-    container.classList.remove('pointer-events-none');
-    backdrop.classList.remove('opacity-0');
-    backdrop.classList.add('opacity-100');
-    drawer.classList.remove('translate-x-full');
-    drawer.classList.add('translate-x-0');
+    isOpen = true;
+    container.classList.remove('hidden');
+    requestAnimationFrame(() => {
+      if (backdrop) {
+        backdrop.classList.remove('opacity-0');
+        backdrop.classList.add('opacity-100');
+      }
+      drawer.classList.remove('translate-x-full');
+      drawer.classList.add('translate-x-0');
+    });
+    if (toggleIcon) toggleIcon.textContent = 'close';
+    toggleBtn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
   }
 
   function closeMobileMenu() {
-    backdrop.classList.remove('opacity-100');
-    backdrop.classList.add('opacity-0');
+    isOpen = false;
+    if (backdrop) {
+      backdrop.classList.remove('opacity-100');
+      backdrop.classList.add('opacity-0');
+    }
     drawer.classList.remove('translate-x-0');
     drawer.classList.add('translate-x-full');
+    if (toggleIcon) toggleIcon.textContent = 'menu';
+    toggleBtn.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
     setTimeout(() => {
-      container.classList.add('pointer-events-none');
+      if (!isOpen) {
+        container.classList.add('hidden');
+      }
     }, 300);
   }
 
-  toggleBtn.addEventListener('click', openMobileMenu);
-  if (closeBtn) closeBtn.addEventListener('click', closeMobileMenu);
-  if (backdrop) backdrop.addEventListener('click', closeMobileMenu);
+  function toggleMobileMenu() {
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleMobileMenu();
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileMenu();
+    });
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileMenu();
+    });
+  }
 
   navLinks.forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
       closeMobileMenu();
+      if (targetId && targetId.startsWith('#') && targetId.length > 1) {
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          setTimeout(() => {
+            const headerOffset = 84;
+            const elementPosition = targetEl.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }, 120);
+        }
+      }
     });
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !drawer.classList.contains('translate-x-full')) {
+    if (e.key === 'Escape' && isOpen) {
+      closeMobileMenu();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024 && isOpen) {
       closeMobileMenu();
     }
   });
@@ -117,25 +180,35 @@ function initScrollHeader() {
 }
 
 /**
- * 4. Active Section Highlighting in Desktop Nav
+ * 4. Active Section Highlighting in Desktop & Mobile Nav
  */
 function initSectionObservers() {
   const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.desktop-nav-link');
+  const desktopLinks = document.querySelectorAll('.desktop-nav-link');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
-  if (!sections.length || !navLinks.length) return;
+  if (!sections.length) return;
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute('id');
-        navLinks.forEach(link => {
+        
+        desktopLinks.forEach(link => {
           if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('text-blue-600', 'font-semibold');
+            link.classList.add('text-blue-600', 'font-semibold', 'active');
             link.classList.remove('text-slate-600');
           } else {
-            link.classList.remove('text-blue-600', 'font-semibold');
+            link.classList.remove('text-blue-600', 'font-semibold', 'active');
             link.classList.add('text-slate-600');
+          }
+        });
+
+        mobileLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
           }
         });
       }

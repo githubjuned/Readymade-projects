@@ -26,6 +26,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 84px;
   font-family: var(--font-body);
   background-color: var(--color-canvas-bg);
   color: var(--color-text-main);
@@ -571,9 +572,71 @@ html {
   color: #F8FAFC !important;
 }
 
-header, main, footer, aside, #project-modal, #mobile-menu-container {
+main, footer {
   position: relative;
   z-index: 10;
+}
+
+#main-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9990 !important;
+}
+
+#mobile-menu-container {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9995 !important;
+}
+
+#mobile-menu-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9996 !important;
+}
+
+#mobile-menu-drawer {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 9997 !important;
+  background-color: #0B1220 !important;
+  border-left: 1px solid rgba(6, 182, 212, 0.3) !important;
+  box-shadow: -8px 0 36px rgba(0, 0, 0, 0.85) !important;
+}
+
+#project-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 10000 !important;
+}
+
+aside {
+  position: fixed !important;
+  z-index: 9980 !important;
+}
+
+/* Mobile Navigation Link High-Contrast Overrides */
+.mobile-nav-link {
+  color: #E2E8F0 !important;
+  transition: all 0.2s ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active,
+.mobile-nav-link.active {
+  color: #FFFFFF !important;
+  background-color: rgba(6, 182, 212, 0.12) !important;
+  border-color: rgba(6, 182, 212, 0.45) !important;
+}
+
+.mobile-nav-link:hover .mobile-nav-icon,
+.mobile-nav-link.active .mobile-nav-icon {
+  background-color: #2563EB !important;
+  color: #FFFFFF !important;
 }
 
 /* Section Transparency & Atmosphere */
