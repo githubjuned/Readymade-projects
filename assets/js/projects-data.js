@@ -39,6 +39,37 @@
 
 const PROJECTS_DATA = [
   {
+    id: "project-mecanum-robot",
+    title: "Award-Winning Autonomous Mecanum Wheel Robot with Memory Robotic Arm",
+    category: "robotics",
+    categoryLabel: "ROBOTICS // TECH FEST 2025 WINNER",
+    badge: "DISTRICT & STATE WINNER",
+    summary: "District-Level and State-Level Winner at Sujana Tech Fest 2025! Features omnidirectional Mecanum locomotion, obstacle avoidance, line following, smartphone app control, computer vision object tracking, robotic arm with memory mode, and block-clearing mechanism.",
+    image: "assets/images/projects/mecanum_robot.jpg",
+    remoteImage: "https://media.licdn.com/dms/image/v2/D5622AQFCplMt8HYCAQ/feedshare-shrink_800/B56ZfpXbCOH8Ag-/0/1751966935045?e=2147483647&v=beta&t=Ip0A-Cq-98my6gZZNzQepzKHOSG5kKMfcMDw35hrO7E",
+    externalUrl: "https://lnkd.in/p/gdeZqHt8",
+    fallbackIcon: "smart_toy",
+    techStack: ["Mecanum Wheels", "Robotic Arm", "Line Following", "Obstacle Avoidance", "Phone App Control", "Object Tracking"],
+    details: {
+      overview: "A multi-modal robotics system awarded both District-Level and State-Level recognition at Sujana Tech Fest 2025. Engineered with omnidirectional Mecanum locomotion, sensor-driven obstacle avoidance, line following, Bluetooth/Wi-Fi smartphone app remote control, computer vision object tracking, and an articulating robotic arm with automated memory mode and block-clearing mechanism.",
+      problem: "Modern industrial logistics and automated guided vehicles (AGVs) require multi-directional agility in confined spaces alongside dexterous manipulation without needing separate fixed robotic arms.",
+      features: [
+        "Omnidirectional 360-degree Mecanum locomotion allowing zero-radius turns and sideways strafing.",
+        "Dual-mode navigation: precision line following and ultrasonic/infrared obstacle detection.",
+        "Custom smartphone mobile application for real-time remote steering and parameter tuning.",
+        "Computer vision object tracking pipeline for autonomous payload targeting.",
+        "Articulating robotic arm equipped with a teach-and-playback Memory Mode for repeat automation.",
+        "Integrated block-clearing and sorting mechanism for warehouse simulated tasks."
+      ],
+      deliverables: [
+        "Complete functional physical Mecanum robot prototype with multi-axis arm",
+        "Full microcontroller firmware & custom smartphone control application",
+        "Circuit schematics, PCB layout, and component wiring diagrams",
+        "State & District award presentation kit, documentation, and viva prep guide"
+      ]
+    }
+  },
+  {
     id: "project-irrigation",
     title: "Solar-Powered IoT Precision Irrigation & Soil Telemetry",
     category: "iot",

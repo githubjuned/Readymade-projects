@@ -299,22 +299,29 @@ function renderProjects() {
   }
 
   grid.innerHTML = filtered.map(project => `
-    <div class="portfolio-item rounded-2xl bg-white shadow-sm overflow-hidden flex flex-col card-hover-elevation group" data-category="${project.category}">
+    <div class="portfolio-item rounded-2xl bg-white shadow-sm overflow-hidden flex flex-col card-hover-elevation group cursor-pointer" data-category="${project.category}" onclick="handleProjectCardClick(event, '${project.id}', '${project.externalUrl || ''}')">
       <!-- Project Image Banner -->
       <div class="relative overflow-hidden aspect-video bg-slate-900">
         <img 
           src="${project.image}" 
           alt="${project.title}"
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          onerror="handleImageFallback(this, '${project.fallbackIcon || 'memory'}')"
+          onerror="handleImageFallback(this, '${project.fallbackIcon || 'memory'}', '${project.remoteImage || ''}')"
           loading="lazy"
         />
         <div class="absolute top-3 left-3 bg-[#0B1220]/90 backdrop-blur-md px-2.5 py-1 rounded text-cyan-300 font-mono-code text-[11px] border border-cyan-500/20">
           ${project.categoryLabel}
         </div>
         ${project.badge ? `
-          <div class="absolute top-3 right-3 bg-blue-600/90 text-white font-mono-code text-[10px] uppercase font-semibold px-2 py-0.5 rounded shadow">
-            ${project.badge}
+          <div class="absolute top-3 right-3 bg-gradient-to-r from-amber-500 to-blue-600 text-white font-mono-code text-[10px] uppercase font-bold px-2.5 py-1 rounded-md shadow-lg border border-amber-300/40 flex items-center gap-1">
+            <span class="material-symbols-outlined text-[13px]">military_tech</span>
+            <span>${project.badge}</span>
+          </div>
+        ` : ''}
+        ${project.externalUrl ? `
+          <div class="absolute bottom-3 right-3 bg-[#0A66C2] text-white font-display text-[11px] font-semibold px-2.5 py-1 rounded-lg shadow-md flex items-center gap-1 border border-white/20">
+            <span>LinkedIn Post</span>
+            <span class="material-symbols-outlined text-[13px]">open_in_new</span>
           </div>
         ` : ''}
       </div>
@@ -322,8 +329,9 @@ function renderProjects() {
       <!-- Project Content Card Body -->
       <div class="p-6 flex flex-col justify-between flex-1 gap-4">
         <div>
-          <h3 class="font-display-heading text-lg font-bold text-[#0B1220] mb-2 leading-snug group-hover:text-blue-600 transition-colors">
-            ${project.title}
+          <h3 class="font-display-heading text-lg font-bold text-[#0B1220] mb-2 leading-snug group-hover:text-blue-600 transition-colors flex items-start justify-between gap-2">
+            <span>${project.title}</span>
+            ${project.externalUrl ? `<span class="material-symbols-outlined text-blue-500 text-[18px] shrink-0 mt-0.5">open_in_new</span>` : ''}
           </h3>
           <p class="text-sm text-slate-600 mb-4 line-clamp-3">
             ${project.summary}
@@ -345,15 +353,36 @@ function renderProjects() {
         </div>
 
         <!-- Action Buttons -->
-        <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
-          <button 
-            type="button"
-            onclick="openProjectModal('${project.id}')"
-            class="btn-slope btn-slope-secondary flex-1 py-2.5 px-3 text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5"
-          >
-            <span>View Details</span>
-            <span class="material-symbols-outlined text-[16px]">visibility</span>
-          </button>
+        <div class="pt-3 border-t border-slate-100 flex items-center gap-2" onclick="event.stopPropagation()">
+          ${project.externalUrl ? `
+            <a 
+              href="${project.externalUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-slope btn-slope-primary flex-1 py-2.5 px-3 text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 shadow-md"
+              title="Open project on LinkedIn"
+            >
+              <span>View on LinkedIn</span>
+              <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+            </a>
+            <button 
+              type="button"
+              onclick="openProjectModal('${project.id}')"
+              class="btn-slope btn-slope-secondary py-2.5 px-3 text-xs font-semibold flex items-center justify-center gap-1"
+              title="View full specs"
+            >
+              <span class="material-symbols-outlined text-[16px]">info</span>
+            </button>
+          ` : `
+            <button 
+              type="button"
+              onclick="openProjectModal('${project.id}')"
+              class="btn-slope btn-slope-secondary flex-1 py-2.5 px-3 text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5"
+            >
+              <span>View Details</span>
+              <span class="material-symbols-outlined text-[16px]">visibility</span>
+            </button>
+          `}
           
           <a 
             href="${getWhatsAppUrl(SITE_CONFIG.whatsappMessages.forProject(project.title))}"
@@ -371,8 +400,21 @@ function renderProjects() {
   `).join('');
 }
 
-function handleImageFallback(img, icon) {
-  // If remote URL fails to load, replace with clean SVG high-tech banner
+function handleProjectCardClick(e, projectId, externalUrl) {
+  if (e.target.closest('button, a, input, select, textarea')) return;
+  if (externalUrl) {
+    window.open(externalUrl, '_blank');
+  } else {
+    openProjectModal(projectId);
+  }
+}
+
+function handleImageFallback(img, icon, remoteFallback) {
+  if (remoteFallback && !img.dataset.triedRemote) {
+    img.dataset.triedRemote = 'true';
+    img.src = remoteFallback;
+    return;
+  }
   const parent = img.parentElement;
   if (!parent) return;
   img.style.display = 'none';
@@ -454,6 +496,17 @@ function openProjectModal(projectId) {
   if (waBtn) {
     const customMsg = SITE_CONFIG.whatsappMessages.forProject(project.title);
     waBtn.href = getWhatsAppUrl(customMsg);
+  }
+
+  // Update External LinkedIn Link button
+  const extBtn = document.getElementById('modal-external-link');
+  if (extBtn) {
+    if (project.externalUrl) {
+      extBtn.href = project.externalUrl;
+      extBtn.classList.remove('hidden');
+    } else {
+      extBtn.classList.add('hidden');
+    }
   }
 
   // Show modal
